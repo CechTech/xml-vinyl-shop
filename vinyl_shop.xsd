@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    xmlns:xs = namespace elementů schematu
+    targetNamespace = z jakeho namespace jsou kontrolovane elementy
+    xmlns = určuje defaultní namespace
+    elementFormDefault = určuje zdali elementy musí patřit do nějakého namespace
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="urn:cecj02:namespace:vinyl_shop"
+    xmlns="urn:cecj02:namespace:vinyl_shop" xmlns:ns="urn:cecj02:namespace:vinyl_shop"
+    elementFormDefault="qualified">
+    
+    <!-- TAG: vinyl_shop -->
+    <xs:element name="vinyl_shop" type="vinyl_shopType"/>
+    <xs:complexType name="vinyl_shopType">
+        <xs:sequence>
+            <xs:element name="autor" type="autorType"/>
+            <xs:element name="hudebni_dila" type="hudebni_dilaType">
+                <!-- Ref. integrita: kazda verze hudebniho dila ma unikatni kod -->
+                <xs:key name="unikatni_kod_dila">
+                    <xs:selector xpath="ns:dilo"/>
+                    <xs:field xpath="ns:kod"/>
+                </xs:key>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- TAG: autor -->
+    <xs:complexType name="autorType">
+        <xs:sequence>
+            <xs:element name="jmeno" type="jmenoType"/>
+            <xs:element name="prijmeni" type="prijmeniType"/>
+            <xs:element name="email" type="emailType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- TAG: jmeno -->
+    <xs:simpleType name="jmenoType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- TAG: prijmeni -->
+    <xs:simpleType name="prijmeniType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- TAG: email -->
+    <xs:simpleType name="emailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\S+@\S+[.]\S+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: hudebni_dila -->
+    <xs:complexType name="hudebni_dilaType">
+        <xs:sequence>
+            <xs:element name="dilo" maxOccurs="unbounded" type="diloType"> </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- TAG: dilo -->
+    <xs:complexType name="diloType">
+        <xs:sequence>
+            <xs:element name="nazev" type="nazevType"/>
+            <xs:element name="obrazek" type="obrazekType"/>
+            <xs:element name="umelci" type="umelciType"/>
+            <xs:element name="vydavatel" type="vydavatelType"/>
+            <xs:element name="vydano" type="vydanoType"/>
+            <xs:element name="kod" type="kodType" minOccurs="0"/>
+            <xs:element name="typ" type="typType" minOccurs="0"/>
+            <xs:element name="format" type="formatType" minOccurs="0"/>
+            <xs:element name="zanry" type="zanryType" minOccurs="0"/>
+            <xs:element name="stav" type="stavType"/>
+            <xs:element name="cena" type="cenaType"/>
+            <xs:element name="dostupnost" type="dostupnostType"/>
+            <xs:element name="obsah" type="obsahType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- TAG: nazev -->
+    <xs:simpleType name="nazevType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="150" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: obrazek -->
+    <xs:complexType name="obrazekType">
+        <xs:attribute name="src" type="xs:anyURI" use="optional"/>
+    </xs:complexType>
+    
+    <!-- TAG: umelci -->
+    <xs:complexType name="umelciType">
+        <xs:sequence>
+            <xs:element name="umelec" maxOccurs="unbounded" type="umelecType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- TAG: umelec -->
+    <xs:simpleType name="umelecType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="150"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: vydavatel -->
+    <xs:complexType name="vydavatelType">
+        <xs:sequence>
+            <xs:element name="nazev" maxOccurs="1" type="nazevType"/>
+            <xs:element name="zeme" maxOccurs="1" minOccurs="0" type="zemeType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- TAG: zeme -->
+    <xs:simpleType name="zemeType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: vydano -->
+    <xs:complexType name="vydanoType">
+        <xs:all>
+            <xs:element name="den" type="denType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="mesic" type="mesicType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="rok" type="rokType" maxOccurs="1"/>
+        </xs:all>
+    </xs:complexType>
+    <!-- TAG: den -->
+    <xs:simpleType name="denType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="31"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- TAG: mesic -->
+    <xs:simpleType name="mesicType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="12"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- TAG: rok -->
+    <xs:simpleType name="rokType">
+        <xs:restriction base="xs:gYear" /> 
+    </xs:simpleType>
+    
+    <!-- TAG: kod -->
+    <xs:simpleType name="kodType">
+        <xs:restriction base="xs:token"/>
+    </xs:simpleType>
+    
+    <!-- TAG: typ -->
+    <xs:simpleType name="typType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Album" />
+            <xs:enumeration value="EP" />
+            <xs:enumeration value="Single" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: format -->
+    <xs:simpleType name="formatType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="5" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: zanry -->
+    <xs:complexType name="zanryType">
+        <xs:sequence>
+            <xs:element name="zanr" type="zanrType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- TAG: zanr -->
+    <xs:simpleType name="zanrType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: stav -->
+    <xs:simpleType name="stavType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="M" />
+            <xs:enumeration value="NM" />
+            <xs:enumeration value="VG+" />
+            <xs:enumeration value="VG" />
+            <xs:enumeration value="G+" />
+            <xs:enumeration value="G" />
+            <xs:enumeration value="F" />
+            <xs:enumeration value="P" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: cena -->
+    <xs:complexType name="cenaType">
+        <xs:simpleContent>
+            <xs:extension base="xs:integer">
+                <xs:attribute name="mena" type="menaType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <!-- ATRIBUT: mena -->
+    <xs:simpleType name="menaType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CZK"/>
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="GBP"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: dostupnost -->
+    <xs:simpleType name="dostupnostType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Skladem" />
+            <xs:enumeration value="Na obědnání" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: obsah -->
+    <xs:complexType name="obsahType">
+        <xs:sequence>
+            <xs:element name="vinyl" type="vinylType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- TAG: vinyl -->
+    <xs:complexType name="vinylType">
+        <xs:sequence>
+            <xs:element name="strana" type="stranaType" maxOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- TAG: strana -->
+    <xs:complexType name="stranaType">
+        <xs:sequence>
+            <xs:element name="kod" type="kodStranyType" maxOccurs="1"/>
+            <xs:element name="skladba" type="skladbaType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- ATRIBUT: kod -->
+    <xs:simpleType name="kodStranyType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- TAG: skladba -->
+    <xs:complexType name="skladbaType">
+        <xs:sequence>
+            <xs:element name="cislo" type="cisloType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="nazev" type="nazevType" maxOccurs="1"/>
+            <xs:element name="delka" type="delkaType" maxOccurs="1"/>
+            <xs:element name="remix" type="remixType"  minOccurs="0" maxOccurs="1"/>
+            <xs:element name="featuring" type="featuringType"  minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- TAG: cislo -->
+    <xs:simpleType name="cisloType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="31"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- TAG: delka -->
+    <xs:complexType name="delkaType">
+        <xs:simpleContent>
+            <xs:extension base="xs:integer">
+                <xs:attribute name="jednotka" type="jednotkaType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <!-- ATRIBUT: jednotka -->
+    <xs:simpleType name="jednotkaType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="s"/>
+            <xs:enumeration value="min"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- TAG: remix -->
+    <xs:complexType name="remixType">
+        <xs:sequence>
+            <xs:element name="umelec" type="umelecType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- TAG: featuring -->
+    <xs:complexType name="featuringType">
+        <xs:sequence>
+            <xs:element name="umelec" type="umelecType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

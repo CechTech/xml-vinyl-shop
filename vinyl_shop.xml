@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vinyl_shop>
+<vinyl_shop xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:cecj02:namespace:vinyl_shop vinyl_shop.xsd"
+    xmlns="urn:cecj02:namespace:vinyl_shop">
     <autor>
         <jmeno>Jiří</jmeno>
         <prijmeni>Čech</prijmeni>
@@ -33,35 +35,43 @@
             <dostupnost>Skladem</dostupnost>
             <obsah>
                 <vinyl>
-                    <strana kod="A">
+                    <strana>
+                        <kod>A</kod>
                         <skladba>
                             <nazev>Decoy</nazev>
                             <delka jednotka="s">425</delka>
                         </skladba>
                     </strana>
-                    <strana kod="B">
-                        <skladba cislo="1">
+                    <strana>
+                        <kod>B</kod>
+                        <skladba>
+                            <cislo>1</cislo>
                             <nazev>Biosfear</nazev>
                             <delka jednotka="s">260</delka>
                         </skladba>    
-                        <skladba cislo="2">
+                        <skladba>
+                            <cislo>2</cislo>
                             <nazev>So Confused</nazev>
                             <delka jednotka="s">283</delka>
                         </skladba> 
                     </strana>      
                 </vinyl>
                 <vinyl>
-                    <strana kod="C">
+                    <strana>
+                        <kod>C</kod>
                         <skladba>
                             <nazev>Clockwork</nazev>
                             <delka jednotka="s">425</delka>
                         </skladba>                       
                     </strana>
-                    <strana kod="D">
+                    <strana>
+                        <kod>D</kod>
                         <skladba>
                             <nazev>Isolation</nazev>
                             <delka jednotka="s">268</delka>
-                            <remixer>Keaton</remixer>
+                            <remix>
+                                <umelec>Keaton</umelec>
+                            </remix>
                         </skladba>
                     </strana>
                 </vinyl>
@@ -92,46 +102,58 @@
             <dostupnost>Skladem</dostupnost>
             <obsah>
                 <vinyl>
-                    <strana kod="A">
-                        <skladba cislo="1">
+                    <strana>
+                        <kod>A</kod>
+                        <skladba>
+                            <cislo>1</cislo>
                             <nazev>Speak To Me</nazev>
                             <delka jednotka="s">73</delka>
                         </skladba>
-                        <skladba cislo="2">
+                        <skladba>
+                            <cislo>2</cislo>
                             <nazev>Breathe</nazev>
                             <delka jednotka="s">116</delka>
                         </skladba>
-                        <skladba cislo="3">
+                        <skladba>
+                            <cislo>3</cislo>
                             <nazev>On The Run</nazev>
                             <delka jednotka="s">215</delka>
                         </skladba>
-                        <skladba cislo="4">
+                        <skladba>
+                            <cislo>4</cislo>
                             <nazev>Time</nazev>
                             <delka jednotka="s">425</delka>
                         </skladba>
-                        <skladba cislo="5">
+                        <skladba>
+                            <cislo>5</cislo>
                             <nazev>The Great Gig In The Sky</nazev>
                             <delka jednotka="s">298</delka>
                         </skladba>
                     </strana>
-                    <strana kod="B">
-                        <skladba cislo="1">
+                    <strana>
+                        <kod>B</kod>
+                        <skladba>
+                            <cislo>1</cislo>
                             <nazev>Money</nazev>
                             <delka jednotka="s">415</delka>
                         </skladba>
-                        <skladba cislo="2">
+                        <skladba>
+                            <cislo>2</cislo>
                             <nazev>Us And Them</nazev>
                             <delka jednotka="s">216</delka>
                         </skladba>
-                        <skladba cislo="3">
+                        <skladba>
+                            <cislo>3</cislo>
                             <nazev>Any Colour You Like</nazev>
                             <delka jednotka="s">346</delka>
                         </skladba>
-                        <skladba cislo="4">
+                        <skladba>
+                            <cislo>4</cislo>
                             <nazev>Brain Damage</nazev>
                             <delka jednotka="s">298</delka>
                         </skladba>
-                        <skladba cislo="5">
+                        <skladba>
+                            <cislo>5</cislo>
                             <nazev>Eclipse</nazev>
                             <delka jednotka="s">179</delka>
                         </skladba>
@@ -166,14 +188,18 @@
             <dostupnost>Na obědnání</dostupnost>
             <obsah>
                 <vinyl>
-                    <strana kod="A">
+                    <strana>
+                        <kod>A</kod>
                         <skladba>
                             <nazev>City 17</nazev>
                             <delka jednotka="s">525</delka>
-                            <featuring>Ryme Tyme</featuring>
+                            <featuring>
+                                <umelec>Ryme Tyme</umelec>
+                            </featuring>
                         </skladba>
                     </strana>
-                    <strana kod="B">
+                    <strana>
+                        <kod>B</kod>
                         <skladba>
                             <nazev>Schranders Dice</nazev>
                             <delka jednotka="s">260</delka>
@@ -181,13 +207,15 @@
                     </strana>      
                 </vinyl>
                 <vinyl>
-                    <strana kod="C">
+                    <strana>
+                        <kod>C</kod>
                         <skladba>
                             <nazev>Chubrub</nazev>
                             <delka jednotka="s">625</delka>
                         </skladba>                       
                     </strana>
-                    <strana kod="D">
+                    <strana>
+                        <kod>D</kod>
                         <skladba>
                             <nazev>Snaggletooth</nazev>
                             <delka jednotka="s">558</delka>
@@ -195,13 +223,15 @@
                     </strana>
                 </vinyl>
                 <vinyl>
-                    <strana kod="E">
+                    <strana>
+                        <kod>E</kod>
                         <skladba>
                             <nazev>G-Force Jesus</nazev>
                             <delka jednotka="s">312</delka>
                         </skladba>                       
                     </strana>
-                    <strana kod="F">
+                    <strana>
+                        <kod>F</kod>
                         <skladba>
                             <nazev>Titanium</nazev>
                             <delka jednotka="s">497</delka>
@@ -236,70 +266,88 @@
             <dostupnost>Skladem</dostupnost>
             <obsah>
                 <vinyl>
-                    <strana kod="A">
-                        <skladba cislo="1">
+                    <strana>
+                        <kod>A</kod>
+                        <skladba>
+                            <cislo>1</cislo>
                             <nazev>Clandestino</nazev>
                             <delka jednotka="s">73</delka>
                         </skladba>
-                        <skladba cislo="2">
+                        <skladba>
+                            <cislo>2</cislo>
                             <nazev>Desaparecido</nazev>
                             <delka jednotka="s">116</delka>
                         </skladba>
-                        <skladba cislo="3">
+                        <skladba>
+                            <cislo>3</cislo>
                             <nazev>Bongo Bong</nazev>
                             <delka jednotka="s">215</delka>
                         </skladba>
-                        <skladba cislo="4">
+                        <skladba>
+                            <cislo>4</cislo>
                             <nazev>Je Ne T'aime Plus</nazev>
                             <delka jednotka="s">425</delka>
                         </skladba>
-                        <skladba cislo="5">
+                        <skladba>
+                            <cislo>5</cislo>
                             <nazev>Mentira...</nazev>
                             <delka jednotka="s">315</delka>
                         </skladba>
-                        <skladba cislo="6">
+                        <skladba>
+                            <cislo>6</cislo>
                             <nazev>Lagrimas De Oro</nazev>
                             <delka jednotka="s">450</delka>
                         </skladba>
-                        <skladba cislo="7">
+                        <skladba>
+                            <cislo>7</cislo>
                             <nazev>Mama Call</nazev>
                             <delka jednotka="s">193</delka>
                         </skladba>
-                        <skladba cislo="8">
+                        <skladba>
+                            <cislo>8</cislo>
                             <nazev>Luna Y Sol</nazev>
                             <delka jednotka="s">226</delka>
                         </skladba>
                     </strana>
-                    <strana kod="B">
-                        <skladba cislo="1">
+                    <strana>
+                        <kod>B</kod>
+                        <skladba>
+                            <cislo>1</cislo>
                             <nazev>Por El Suelo (Esperando La Ultima Ola)</nazev>
                             <delka jednotka="s">415</delka>
                         </skladba>
-                        <skladba cislo="2">
+                        <skladba>
+                            <cislo>2</cislo>
                             <nazev>Welcome To Tijuana</nazev>
                             <delka jednotka="s">216</delka>
                         </skladba>
-                        <skladba cislo="3">
+                        <skladba>
+                            <cislo>3</cislo>
                             <nazev>Dia Luna... Dia Pena</nazev>
                             <delka jednotka="s">346</delka>
                         </skladba>
-                        <skladba cislo="4">
+                        <skladba>
+                            <cislo>4</cislo>
                             <nazev>Malegria</nazev>
                             <delka jednotka="s">298</delka>
                         </skladba>
-                        <skladba cislo="5">
+                        <skladba>
+                            <cislo>5</cislo>
                             <nazev>Minha Galera</nazev>
                             <delka jednotka="s">179</delka>
                         </skladba>
-                        <skladba cislo="6">
+                        <skladba>
+                            <cislo>6</cislo>
                             <nazev>La Despedida</nazev>
                             <delka jednotka="s">295</delka>
                         </skladba>
-                        <skladba cislo="7">
+                        <skladba>
+                            <cislo>7</cislo>
                             <nazev>La Vie A 2</nazev>
                             <delka jednotka="s">143</delka>
                         </skladba>
-                        <skladba cislo="8">
+                        <skladba>
+                            <cislo>8</cislo>
                             <nazev>El Viento</nazev>
                             <delka jednotka="s">213</delka>
                         </skladba>
@@ -334,13 +382,15 @@
             <dostupnost>Skladem</dostupnost>
             <obsah>
                 <vinyl>
-                    <strana kod="A">
+                    <strana>
+                        <kod>A</kod>
                         <skladba>
                             <nazev>Star Trails</nazev>
                             <delka jednotka="s">725</delka>
                         </skladba>
                     </strana>
-                    <strana kod="B">
+                    <strana>
+                        <kod>B</kod>
                         <skladba>
                             <nazev>Hybrid</nazev>
                             <delka jednotka="s">860</delka>
@@ -375,14 +425,18 @@
             <dostupnost>Skladem</dostupnost>
             <obsah>
                 <vinyl>
-                    <strana kod="A">
+                    <strana>
+                        <kod>A</kod>
                         <skladba>
                             <nazev>Mixed Bag</nazev>
                             <delka jednotka="s">559</delka>
-                            <featuring>DRS</featuring>
+                            <featuring>
+                                <umelec>DRS</umelec>
+                            </featuring>
                         </skladba>
                     </strana>
-                    <strana kod="B">
+                    <strana>
+                        <kod>B</kod>
                         <skladba>
                             <nazev>Step Forward</nazev>
                             <delka jednotka="s">260</delka>
@@ -390,17 +444,21 @@
                     </strana>      
                 </vinyl>
                 <vinyl>
-                    <strana kod="C">
+                    <strana>
+                        <kod>C</kod>
                         <skladba>
                             <nazev>Jupiter</nazev>
                             <delka jednotka="s">625</delka>
                         </skladba>                       
                     </strana>
-                    <strana kod="D">
+                    <strana>
+                        <kod>D</kod>
                         <skladba>
                             <nazev>Stingray</nazev>
                             <delka jednotka="s">398</delka>
-                            <featuring>Lynx</featuring>
+                            <featuring>
+                                <umelec>Lynx</umelec>
+                            </featuring>
                         </skladba>
                     </strana>
                 </vinyl>
