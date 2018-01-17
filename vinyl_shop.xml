@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vinyl_shop>
+    <autor>
+        <jmeno>Jiří</jmeno>
+        <prijmeni>Čech</prijmeni>
+        <email>jiricech94@gmail.com</email>
+    </autor>
+    <hudebni_dila>
+        <dilo>
+            <nazev>Clockwork</nazev>
+            <obrazek src="" />
+            <umelci>
+                <umelec>Stakka</umelec>
+                <umelec>Skynet</umelec>
+            </umelci>
+            <vydavatel>
+                <nazev>Underfire Recordings</nazev>
+                <zeme>UK</zeme>
+            </vydavatel>
+            <vydano>
+                <den>20</den>
+                <mesic>9</mesic>
+                <rok>2001</rok>
+            </vydano>
+            <kod>UDFRLP04</kod>
+            <typ>Album</typ>
+            <format>2xLP</format>
+            <zanry>
+                <zanr>Drum &amp; Bass</zanr>             
+            </zanry>
+            <stav>M</stav>
+            <cena mena="CZK">690</cena>
+            <dostupnost>Skladem</dostupnost>
+            <obsah>
+                <vinyl>
+                    <strana kod="A">
+                        <skladba>
+                            <nazev>Decoy</nazev>
+                            <delka jednotka="s">425</delka>
+                        </skladba>
+                    </strana>
+                    <strana kod="B">
+                        <skladba cislo="1">
+                            <nazev>Biosfear</nazev>
+                            <delka jednotka="s">260</delka>
+                        </skladba>    
+                        <skladba cislo="2">
+                            <nazev>So Confused</nazev>
+                            <delka jednotka="s">283</delka>
+                        </skladba> 
+                    </strana>      
+                </vinyl>
+                <vinyl>
+                    <strana kod="C">
+                        <skladba>
+                            <nazev>Clockwork</nazev>
+                            <delka jednotka="s">425</delka>
+                        </skladba>                       
+                    </strana>
+                    <strana kod="D">
+                        <skladba>
+                            <nazev>Isolation</nazev>
+                            <delka jednotka="s">268</delka>
+                            <remixer>Keaton</remixer>
+                        </skladba>
+                    </strana>
+                </vinyl>
+            </obsah>
+        </dilo>
+        <dilo>
+            <nazev>Dark Side Of The Moon</nazev>
+            <obrazek src="" />
+            <umelci>
+                <umelec>Pink Floyd</umelec>
+            </umelci>
+            <vydavatel>
+                <nazev>Harvest</nazev>
+                <zeme>US</zeme>
+            </vydavatel>
+            <vydano>
+                <rok>1973</rok>
+            </vydano>
+            <kod>SMAS 11163</kod>
+            <typ>Album</typ>
+            <format>LP</format>
+            <zanry>
+                <zanr>Classic Rock</zanr>
+                <zanr>Progressive Rock</zanr>             
+            </zanry>
+            <stav>NM</stav>
+            <cena mena="CZK">720</cena>
+            <dostupnost>Skladem</dostupnost>
+            <obsah>
+                <vinyl>
+                    <strana kod="A">
+                        <skladba cislo="1">
+                            <nazev>Speak To Me</nazev>
+                            <delka jednotka="s">73</delka>
+                        </skladba>
+                        <skladba cislo="2">
+                            <nazev>Breathe</nazev>
+                            <delka jednotka="s">116</delka>
+                        </skladba>
+                        <skladba cislo="3">
+                            <nazev>On The Run</nazev>
+                            <delka jednotka="s">215</delka>
+                        </skladba>
+                        <skladba cislo="4">
+                            <nazev>Time</nazev>
+                            <delka jednotka="s">425</delka>
+                        </skladba>
+                        <skladba cislo="5">
+                            <nazev>The Great Gig In The Sky</nazev>
+                            <delka jednotka="s">298</delka>
+                        </skladba>
+                    </strana>
+                    <strana kod="B">
+                        <skladba cislo="1">
+                            <nazev>Money</nazev>
+                            <delka jednotka="s">415</delka>
+                        </skladba>
+                        <skladba cislo="2">
+                            <nazev>Us And Them</nazev>
+                            <delka jednotka="s">216</delka>
+                        </skladba>
+                        <skladba cislo="3">
+                            <nazev>Any Colour You Like</nazev>
+                            <delka jednotka="s">346</delka>
+                        </skladba>
+                        <skladba cislo="4">
+                            <nazev>Brain Damage</nazev>
+                            <delka jednotka="s">298</delka>
+                        </skladba>
+                        <skladba cislo="5">
+                            <nazev>Eclipse</nazev>
+                            <delka jednotka="s">179</delka>
+                        </skladba>
+                    </strana>      
+                </vinyl>
+            </obsah>
+        </dilo>
+        <dilo>
+            <nazev>Travel The Galaxy</nazev>
+            <obrazek src="" />
+            <umelci>
+                <umelec>Ed Rush</umelec>
+                <umelec>Optical</umelec>
+            </umelci>
+            <vydavatel>
+                <nazev>Virus Recordings</nazev>
+                <zeme>UK</zeme>
+            </vydavatel>
+            <vydano>
+                <den>11</den>
+                <mesic>5</mesic>
+                <rok>2009</rok>
+            </vydano>
+            <kod>VRS007LP</kod>
+            <typ>Album</typ>
+            <format>3xLP</format>
+            <zanry>
+                <zanr>Drum &amp; Bass</zanr>             
+            </zanry>
+            <stav>VG</stav>
+            <cena mena="CZK">1190</cena>
+            <dostupnost>Na obědnání</dostupnost>
+            <obsah>
+                <vinyl>
+                    <strana kod="A">
+                        <skladba>
+                            <nazev>City 17</nazev>
+                            <delka jednotka="s">525</delka>
+                            <featuring>Ryme Tyme</featuring>
+                        </skladba>
+                    </strana>
+                    <strana kod="B">
+                        <skladba>
+                            <nazev>Schranders Dice</nazev>
+                            <delka jednotka="s">260</delka>
+                        </skladba>     
+                    </strana>      
+                </vinyl>
+                <vinyl>
+                    <strana kod="C">
+                        <skladba>
+                            <nazev>Chubrub</nazev>
+                            <delka jednotka="s">625</delka>
+                        </skladba>                       
+                    </strana>
+                    <strana kod="D">
+                        <skladba>
+                            <nazev>Snaggletooth</nazev>
+                            <delka jednotka="s">558</delka>
+                        </skladba>
+                    </strana>
+                </vinyl>
+                <vinyl>
+                    <strana kod="E">
+                        <skladba>
+                            <nazev>G-Force Jesus</nazev>
+                            <delka jednotka="s">312</delka>
+                        </skladba>                       
+                    </strana>
+                    <strana kod="F">
+                        <skladba>
+                            <nazev>Titanium</nazev>
+                            <delka jednotka="s">497</delka>
+                        </skladba>
+                    </strana>
+                </vinyl>
+            </obsah>
+        </dilo>
+        <dilo>
+            <nazev>Clandestino</nazev>
+            <obrazek src="" />
+            <umelci>
+                <umelec>Manu Chao</umelec>
+            </umelci>
+            <vydavatel>
+                <nazev>Virgin</nazev>
+                <zeme>FR</zeme>
+            </vydavatel>
+            <vydano>
+                <mesic>3</mesic>
+                <rok>1998</rok>
+            </vydano>
+            <kod>7243 8 45783 1 2</kod>
+            <typ>Album</typ>
+            <format>LP</format>
+            <zanry>
+                <zanr>Rock</zanr>
+                <zanr>Reggae</zanr>             
+            </zanry>
+            <stav>G</stav>
+            <cena mena="CZK">1560</cena>
+            <dostupnost>Skladem</dostupnost>
+            <obsah>
+                <vinyl>
+                    <strana kod="A">
+                        <skladba cislo="1">
+                            <nazev>Clandestino</nazev>
+                            <delka jednotka="s">73</delka>
+                        </skladba>
+                        <skladba cislo="2">
+                            <nazev>Desaparecido</nazev>
+                            <delka jednotka="s">116</delka>
+                        </skladba>
+                        <skladba cislo="3">
+                            <nazev>Bongo Bong</nazev>
+                            <delka jednotka="s">215</delka>
+                        </skladba>
+                        <skladba cislo="4">
+                            <nazev>Je Ne T'aime Plus</nazev>
+                            <delka jednotka="s">425</delka>
+                        </skladba>
+                        <skladba cislo="5">
+                            <nazev>Mentira...</nazev>
+                            <delka jednotka="s">315</delka>
+                        </skladba>
+                        <skladba cislo="6">
+                            <nazev>Lagrimas De Oro</nazev>
+                            <delka jednotka="s">450</delka>
+                        </skladba>
+                        <skladba cislo="7">
+                            <nazev>Mama Call</nazev>
+                            <delka jednotka="s">193</delka>
+                        </skladba>
+                        <skladba cislo="8">
+                            <nazev>Luna Y Sol</nazev>
+                            <delka jednotka="s">226</delka>
+                        </skladba>
+                    </strana>
+                    <strana kod="B">
+                        <skladba cislo="1">
+                            <nazev>Por El Suelo (Esperando La Ultima Ola)</nazev>
+                            <delka jednotka="s">415</delka>
+                        </skladba>
+                        <skladba cislo="2">
+                            <nazev>Welcome To Tijuana</nazev>
+                            <delka jednotka="s">216</delka>
+                        </skladba>
+                        <skladba cislo="3">
+                            <nazev>Dia Luna... Dia Pena</nazev>
+                            <delka jednotka="s">346</delka>
+                        </skladba>
+                        <skladba cislo="4">
+                            <nazev>Malegria</nazev>
+                            <delka jednotka="s">298</delka>
+                        </skladba>
+                        <skladba cislo="5">
+                            <nazev>Minha Galera</nazev>
+                            <delka jednotka="s">179</delka>
+                        </skladba>
+                        <skladba cislo="6">
+                            <nazev>La Despedida</nazev>
+                            <delka jednotka="s">295</delka>
+                        </skladba>
+                        <skladba cislo="7">
+                            <nazev>La Vie A 2</nazev>
+                            <delka jednotka="s">143</delka>
+                        </skladba>
+                        <skladba cislo="8">
+                            <nazev>El Viento</nazev>
+                            <delka jednotka="s">213</delka>
+                        </skladba>
+                    </strana>      
+                </vinyl>
+            </obsah>
+        </dilo>
+        <dilo>
+            <nazev>Star Trails / Hybrid</nazev>
+            <obrazek src="" />
+            <umelci>
+                <umelec>Kemal</umelec>
+                <umelec>Rob Data</umelec>
+            </umelci>
+            <vydavatel>
+                <nazev>Audio Blueprint</nazev>
+                <zeme>UK</zeme>
+            </vydavatel>
+            <vydano>
+                <den>16</den>
+                <mesic>10</mesic>
+                <rok>2000</rok>
+            </vydano>
+            <kod>ABPR013</kod>
+            <typ>Single</typ>
+            <format>LP</format>
+            <zanry>
+                <zanr>Drum &amp; Bass</zanr>             
+            </zanry>
+            <stav>NM</stav>
+            <cena mena="CZK">690</cena>
+            <dostupnost>Skladem</dostupnost>
+            <obsah>
+                <vinyl>
+                    <strana kod="A">
+                        <skladba>
+                            <nazev>Star Trails</nazev>
+                            <delka jednotka="s">725</delka>
+                        </skladba>
+                    </strana>
+                    <strana kod="B">
+                        <skladba>
+                            <nazev>Hybrid</nazev>
+                            <delka jednotka="s">860</delka>
+                        </skladba>     
+                    </strana>      
+                </vinyl>
+            </obsah>
+        </dilo>
+        <dilo>
+            <nazev>FOUR:FIT EP 08</nazev>
+            <obrazek src="" />
+            <umelci>
+                <umelec>Marcus Intalex</umelec>
+            </umelci>
+            <vydavatel>
+                <nazev>Soul:r</nazev>
+                <zeme>UK</zeme>
+            </vydavatel>
+            <vydano>
+                <den>17</den>
+                <mesic>6</mesic>
+                <rok>2016</rok>
+            </vydano>
+            <kod>SOULR071</kod>
+            <typ>EP</typ>
+            <format>2xLP</format>
+            <zanry>
+                <zanr>Drum &amp; Bass</zanr>             
+            </zanry>
+            <stav>VG</stav>
+            <cena mena="CZK">790</cena>
+            <dostupnost>Skladem</dostupnost>
+            <obsah>
+                <vinyl>
+                    <strana kod="A">
+                        <skladba>
+                            <nazev>Mixed Bag</nazev>
+                            <delka jednotka="s">559</delka>
+                            <featuring>DRS</featuring>
+                        </skladba>
+                    </strana>
+                    <strana kod="B">
+                        <skladba>
+                            <nazev>Step Forward</nazev>
+                            <delka jednotka="s">260</delka>
+                        </skladba>    
+                    </strana>      
+                </vinyl>
+                <vinyl>
+                    <strana kod="C">
+                        <skladba>
+                            <nazev>Jupiter</nazev>
+                            <delka jednotka="s">625</delka>
+                        </skladba>                       
+                    </strana>
+                    <strana kod="D">
+                        <skladba>
+                            <nazev>Stingray</nazev>
+                            <delka jednotka="s">398</delka>
+                            <featuring>Lynx</featuring>
+                        </skladba>
+                    </strana>
+                </vinyl>
+            </obsah>
+        </dilo>
+    </hudebni_dila>
+</vinyl_shop>
+
