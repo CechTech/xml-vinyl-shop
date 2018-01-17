@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    xmlns:xs = namespace elementů schematu
-    targetNamespace = z jakeho namespace jsou kontrolovane elementy
-    xmlns = určuje defaultní namespace
-    elementFormDefault = určuje zdali elementy musí patřit do nějakého namespace
--->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     targetNamespace="urn:cecj02:namespace:vinyl_shop"
     xmlns="urn:cecj02:namespace:vinyl_shop" xmlns:ns="urn:cecj02:namespace:vinyl_shop"
@@ -67,10 +61,10 @@
             <xs:element name="umelci" type="umelciType"/>
             <xs:element name="vydavatel" type="vydavatelType"/>
             <xs:element name="vydano" type="vydanoType"/>
-            <xs:element name="kod" type="kodType" minOccurs="0"/>
-            <xs:element name="typ" type="typType" minOccurs="0"/>
-            <xs:element name="format" type="formatType" minOccurs="0"/>
-            <xs:element name="zanry" type="zanryType" minOccurs="0"/>
+            <xs:element name="kod" type="kodType"/>
+            <xs:element name="typ" type="typType"/>
+            <xs:element name="format" type="formatType"/>
+            <xs:element name="zanry" type="zanryType"/>
             <xs:element name="stav" type="stavType"/>
             <xs:element name="cena" type="cenaType"/>
             <xs:element name="dostupnost" type="dostupnostType"/>
