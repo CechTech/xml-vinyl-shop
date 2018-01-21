@@ -68,7 +68,6 @@
                     <td>Vydavatel</td>
                     <td>Rok</td>
                     <td>Typ</td>
-                    <td>Formát</td>
                     <td>Žánr</td>
                     <td>Stav</td>
                     <td>Cena</td>
@@ -102,9 +101,6 @@
             </td>
             <td class="td6">
                 <xsl:apply-templates select="fd:typ"/>
-            </td>
-            <td class="td7">
-                <xsl:apply-templates select="fd:format"/>
             </td>
             <td class="td8">
                 <xsl:apply-templates select="fd:zanry"/>

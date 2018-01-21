@@ -48,7 +48,7 @@ h1 {
 	height: 50px;
 	color: #FFFFFF;
 	text-shadow: 1px 1px #222222;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 .titulky > td {
@@ -64,7 +64,7 @@ td:last-child {
 	text-align: center;
 	height: 170px;
 	background-color: #FFFFFF;
-	font-size: 12px;
+	font-size: 13px;
 }
 
 .film-radek > td {
@@ -73,7 +73,8 @@ td:last-child {
 }
 
 .td2 h3 a {
-	font-size: 12px;
+    text-align: left;
+	font-size: 14px;
 	color: #060606;
 }
 
