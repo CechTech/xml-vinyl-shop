@@ -322,7 +322,13 @@
     </xsl:template>
     
     <xsl:template match="fd:skladba/fd:nazev" mode="detail">
-        <div class="popis">
+        <div class="obsah">
+            <xsl:apply-templates/>
+        </div>
+    </xsl:template>
+    
+    <xsl:template match="fd:skladba/fd:nazev" mode="detail">
+        <div class="obsah">
             <xsl:apply-templates/>
         </div>
     </xsl:template>
