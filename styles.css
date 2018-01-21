@@ -52,6 +52,7 @@ h1 {
 }
 
 .titulky > td {
+    text-align: center;
     padding-left: 20px;    
 }
 
@@ -67,13 +68,17 @@ td:last-child {
 }
 
 .film-radek > td {
-    text-align: left;
+    text-align: center;
     padding-left: 20px; 
 }
 
 .td2 h3 a {
 	font-size: 12px;
 	color: #060606;
+}
+
+.td10 {
+    width: 70px;    
 }
 
 table .film-radek {
@@ -130,7 +135,7 @@ table .film-radek {
 	float: left;
 }
 .nazev {
-	width: 84%;
+	width: 79%;
 	float: right;
 	position: relative;
 	text-align: center;
@@ -138,56 +143,96 @@ table .film-radek {
 	background-color: #666666;
 	color: #FFFFFF;
 }
-.popis {
+.umelci {
+    position: relative;
+    left: 55px;
 	width: 180px;
-	float: left;
 	text-align: left;
+	float: left;
+}
+
+.vydavatel {
+    position: relative;
+    left: 55px;
+	width: 200px;
+	text-align: left;
+	float: left;
+}
+
+.vydano {
+    position: relative;
+    left: 55px;
+	width: 140px;
+	text-align: left;
+	float: left;
+}
+
+.zeme {
+    position: relative;
+    left: 55px;
+	width: 140px;
+	text-align: left;
+	float: left;
+}
+
+.typ {
+    position: relative;
+    left: 55px;
+	width: 120px;
+	text-align: left;
+	float: left;
+}
+
+.format {
+    position: relative;
+    clear: both;
+    left: 215px;
+	width: 180px;
+	text-align: left;
+	float: left;
+}
+
+.zanry {
+    position: relative;
+    left: 215px;
+	width: 200px;
+	text-align: left;
+	float: left;
+}
+
+.stav {
+    position: relative;
+    left: 215px;
+	width: 140px;
+	text-align: left;
+	float: left;
+}
+
+.cena {
+    position: relative;
+    left: 215px;
+	width: 140px;
+	text-align: left;
+	float: left;
+}
+
+.dostupnost {
+    position: relative;
+    left: 215px;
+	width: 180px;
+	text-align: left;
+	float: left;
 }
 
 .obsah {
     clear: both;    
 }
 
-.portalove_hodnoceni h3  {
-	font-size: 120%;
-	text-align: center;
-}
-.puvod   {
-	width: 130px;
-	text-align: center;
-	float: left;
-}
-.rok_natoceni {
-	width: 150px;
-	float: left;
-	text-align: center;
-}
-
-.part2   {
-	float: left;
-}
-
 .part3 {
     float: none;
     clear: both;
 }
-.zanr {
-	width: 170px;
-	clear: both;
-	float: left;
-}
-.stopaz {
-	width: 150px;
-	float: left;
-}
-.rozpocet {
-	width: 215px;
-	float: left;
-}
-.produkce {
-	width: 220px;
-	float: left;
-}
+
 #content-detail .image-box img {
 	min-width: 145px;
 	

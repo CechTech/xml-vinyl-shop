@@ -134,22 +134,21 @@
                             <xsl:apply-templates select="//fd:autor"/>
                         </div>
                         <div id="content-detail">
-                            <div class="part1">
+                            <div class="info">
                                 <xsl:apply-templates select="fd:obrazek" mode="detail"/>
                                 <xsl:apply-templates select="fd:nazev" mode="detail"/>
                                 <xsl:apply-templates select="fd:umelci" mode="detail"/>
                                 <xsl:apply-templates select="fd:vydavatel" mode="detail"/>
                                 <xsl:apply-templates select="fd:vydano" mode="detail"/>
+                                <xsl:apply-templates select="fd:vydavatel/fd:zeme" mode="detail"/>
                                 <xsl:apply-templates select="fd:typ" mode="detail"/>
                                 <xsl:apply-templates select="fd:format" mode="detail"/>
                                 <xsl:apply-templates select="fd:zanry" mode="detail"/>
-                            </div>
-
-                            <div class="part2">
                                 <xsl:apply-templates select="fd:stav" mode="detail"/>
                                 <xsl:apply-templates select="fd:cena" mode="detail"/>
                                 <xsl:apply-templates select="fd:dostupnost" mode="detail"/>
                             </div>
+                            
                             <div class="part3">
                                 <xsl:apply-templates select="fd:obsah" mode="detail"/>
                             </div>
@@ -172,26 +171,25 @@
     </xsl:template>
     <xsl:template match="fd:zanry">
         <xsl:for-each select="fd:zanr">
+            <xsl:if test="position() > 1">, </xsl:if>
             <xsl:value-of select="."/>
-            <br />
         </xsl:for-each>
     </xsl:template>
     <xsl:template match="fd:cena">
         <xsl:apply-templates/>
         <xsl:text> </xsl:text>
         <xsl:value-of select="@mena"/>
-        <br/>
     </xsl:template>
     <xsl:template match="fd:obrazek">
         <xsl:if test="@src">
             <div class="image-box">
                 <img src="images\{@src}" alt="{../fd:nazev}" title="{../fd:nazev}"
-                    class="img" height="150"/>
+                    class="img" height="150" width="150" />
             </div>
         </xsl:if>
         <xsl:if test="not(@src)">
             <div class="plakat-miss">
-                <xsl:text>Plakát není k dispozici</xsl:text>
+                <xsl:text>Obrázek není k dispozici</xsl:text>
             </div>
         </xsl:if>
     </xsl:template>
@@ -207,7 +205,7 @@
             </xsl:if>
             <xsl:if test="not(@src)">
                 <div class="plakat-miss">
-                    <xsl:text>Plakát není k dispozici</xsl:text>
+                    <xsl:text>Obrázek není k dispozici</xsl:text>
                 </div>
             </xsl:if>
         </div>
@@ -224,31 +222,32 @@
 
     <!-- umelci -->
     <xsl:template match="fd:umelci" mode="detail">
-        <div class="popis">
+        <div class="umelci">
             <h3>
                 <xsl:text>Umělec</xsl:text>
             </h3>
             <xsl:for-each select="fd:umelec">
-
-                    <xsl:value-of select="."/>
-                <br />
+                <xsl:if test="position() > 1">, </xsl:if>
+                <xsl:value-of select="."/>
             </xsl:for-each>
         </div>
     </xsl:template>
     
     <!-- vydavatel -->
     <xsl:template match="fd:vydavatel" mode="detail">
-        <div class="popis">
-            <h3>Vydavatel</h3>
+        <div class="vydavatel">
+            <h3>
+                <xsl:text>Vydavatel</xsl:text>
+            </h3>
             <p>
-                <xsl:apply-templates/>
+                <xsl:value-of select="fd:nazev"/>
             </p>
         </div>
     </xsl:template>
 
     <!-- vydano -->
     <xsl:template match="fd:vydano" mode="detail">
-        <div class="popis">
+        <div class="vydano">
             <h3>
                 <xsl:text>Vydáno</xsl:text>
             </h3>
@@ -256,9 +255,21 @@
         </div>
     </xsl:template>
     
+    <!-- zeme -->
+    <xsl:template match="fd:vydavatel/fd:zeme" mode="detail">
+        <div class="zeme">
+            <h3>
+                <xsl:text>Země</xsl:text>
+            </h3>
+            <p>
+                <xsl:apply-templates/>
+            </p>
+        </div>
+    </xsl:template>
+    
     <!-- typ -->
     <xsl:template match="fd:typ" mode="detail">
-        <div class="popis">
+        <div class="typ">
             <h3>
                 <xsl:text>Typ</xsl:text>
             </h3>
@@ -268,7 +279,7 @@
     
     <!-- format -->
     <xsl:template match="fd:format" mode="detail">
-        <div class="popis">
+        <div class="format">
             <h3>
                 <xsl:text>Formát</xsl:text>
             </h3>
@@ -278,20 +289,20 @@
     
     <!-- zanry -->
     <xsl:template match="fd:zanry" mode="detail">
-        <div class="popis">
+        <div class="zanry">
             <h3>
                 <xsl:text>Žánr</xsl:text>
             </h3>
             <xsl:for-each select="fd:zanr">
-                 <xsl:value-of select="."/>
-                <br />
+                <xsl:if test="position() > 1">, </xsl:if>
+                <xsl:value-of select="."/>
             </xsl:for-each>
         </div>
     </xsl:template>
     
     <!-- stav -->
     <xsl:template match="fd:stav" mode="detail">
-        <div class="popis">
+        <div class="stav">
             <h3>
                 <xsl:text>Stav</xsl:text>
             </h3>
@@ -301,7 +312,7 @@
     
     <!-- cena -->
     <xsl:template match="fd:cena" mode="detail">
-        <div class="popis">
+        <div class="cena">
             <h3>
                 <xsl:text>Cena</xsl:text>
             </h3>
@@ -313,16 +324,10 @@
 
     <!-- dostupnost -->
     <xsl:template match="fd:dostupnost" mode="detail">
-        <div class="popis">
+        <div class="dostupnost">
             <h3>
                 <xsl:text>Dostupnost</xsl:text>
             </h3>
-            <xsl:apply-templates/>
-        </div>
-    </xsl:template>
-    
-    <xsl:template match="fd:skladba/fd:nazev" mode="detail">
-        <div class="obsah">
             <xsl:apply-templates/>
         </div>
     </xsl:template>
