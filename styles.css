@@ -4,6 +4,7 @@ body {
 	background-color: #272727;
 	font-family: Verdana, sans-serif;
 }
+
 #header {
 	background-color: #666666;
 	border-bottom-left-radius: 3px;
@@ -29,19 +30,14 @@ h1 {
 	margin: 0 auto;
 }
 
-
-#seznam table {
+.katalog {
 	width: 100%;
     border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
-}
-
-#content #seznam table {
 	border-collapse: collapse;
 }
 
-
-.titulky {
+.nadpisy {
 	text-align: left;
 	font-weight: bold;
 	background-color: #930B0A;
@@ -51,7 +47,7 @@ h1 {
 	font-size: 15px;
 }
 
-.titulky > td {
+.nadpisy > td {
     text-align: center;
     padding-left: 20px;    
 }
@@ -60,81 +56,50 @@ td:last-child {
     padding-right: 20px;
 }
 
-.film-radek {
+.dilo {
 	text-align: center;
 	height: 170px;
 	background-color: #FFFFFF;
 	font-size: 13px;
 }
 
-.film-radek > td {
+.dilo > td {
     text-align: center;
     padding-left: 20px; 
 }
 
-.td2 h3 a {
-    text-align: left;
-	font-size: 14px;
-	color: #060606;
-}
-
-.td10 {
+.dilo > td:nth-child(9) {
     width: 70px;    
-}
-
-table .film-radek {
-	position: relative;
-	left: 5px;
-	min-width: 130px
 }
 
 #footer  {
 	text-align: center;
-	margin-top: 55px;
-	margin-bottom: 55px;
+	margin: 55px 0;
 	font-weight: bold;
-	clear: both;
 	color: #FFFFFF;
 }
 .back-button {
-	clear: both;
 	text-align: center;
-	padding-top: 10px;
-	padding-right: 10px;
-	padding-bottom: 10px;
-	padding-left: 10px;
+	padding: 10px;
 	background-color: #940A0A;
 	width: 150px;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 50px;
+	margin: 35px auto 20px auto;
 	display: block;
 }
+
 .back-button a {
 	color: #FFFFFF;
 }
 
-#content-detail {
+.detail {
 	background-color: #FFFFFF;
-	padding-top: 10px;
-	padding-right: 10px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-	-webkit-box-shadow: 1px 1px 10px #3A3A3A;
-	box-shadow: 1px 1px 10px #3A3A3A;
+	padding: 15px;
 }
 
-
-
-/* Detail */
-
-.plakat   {
-	width: 16%;
+.obrazek {
 	float: left;
 }
+
 .nazev {
 	width: 79%;
 	float: right;
@@ -144,9 +109,10 @@ table .film-radek {
 	background-color: #666666;
 	color: #FFFFFF;
 }
+
 .umelci {
     position: relative;
-    left: 55px;
+    left: 15px;
 	width: 180px;
 	text-align: left;
 	float: left;
@@ -154,7 +120,7 @@ table .film-radek {
 
 .vydavatel {
     position: relative;
-    left: 55px;
+    left: 15px;
 	width: 200px;
 	text-align: left;
 	float: left;
@@ -162,7 +128,7 @@ table .film-radek {
 
 .vydano {
     position: relative;
-    left: 55px;
+    left: 15px;
 	width: 140px;
 	text-align: left;
 	float: left;
@@ -170,7 +136,7 @@ table .film-radek {
 
 .zeme {
     position: relative;
-    left: 55px;
+    left: 15px;
 	width: 140px;
 	text-align: left;
 	float: left;
@@ -178,7 +144,7 @@ table .film-radek {
 
 .typ {
     position: relative;
-    left: 55px;
+    left: 15px;
 	width: 120px;
 	text-align: left;
 	float: left;

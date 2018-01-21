@@ -11,7 +11,7 @@
             <html>
                 <head>
                     <title>
-                        <xsl:text>Katalog gramodesek</xsl:text>
+                        <xsl:text>Vinyl Shop</xsl:text>
                         <xsl:value-of select="fd:jmeno"/>
                         <xsl:text> </xsl:text>
                         <xsl:value-of select="fd:prijmeni"/>
@@ -29,13 +29,13 @@
     <xsl:template match="fd:vinyl_shop">
         <div id="page">
             <div id="header">
-                <h1>Katalog gramodesek</h1>
+                <h1>Vinyl Shop</h1>
                 <xsl:apply-templates select="fd:autor"/>
             </div>
             <div id="content">
                 <xsl:apply-templates select="fd:hudebni_dila"/>
             </div>
-            <div id="footer"> 2018 - Vinyl shop </div>
+            <div id="footer">2018 - Vinyl shop</div>
         </div>
     </xsl:template>
 
@@ -59,59 +59,57 @@
 
     <!-- CONTENT - MAINPAGE -->
     <xsl:template match="fd:hudebni_dila">
-        <div id="seznam">
-            <table>
-                <tr class="titulky">
-                    <td>Obrázek</td>
-                    <td>Název</td>
-                    <td>Umělci</td>
-                    <td>Vydavatel</td>
-                    <td>Rok</td>
-                    <td>Typ</td>
-                    <td>Žánr</td>
-                    <td>Stav</td>
-                    <td>Cena</td>
-                    <td>Dostupnost</td>
-                </tr>
-                <xsl:apply-templates/>
-            </table>
-        </div>
+        <table class="katalog">
+            <tr class="nadpisy">
+                <td>Obrázek</td>
+                <td>Název</td>
+                <td>Umělci</td>
+                <td>Vydavatel</td>
+                <td>Rok</td>
+                <td>Typ</td>
+                <td>Žánr</td>
+                <td>Stav</td>
+                <td>Cena</td>
+                <td>Dostupnost</td>
+            </tr>
+            <xsl:apply-templates/>
+        </table>
     </xsl:template>
 
     <xsl:template match="fd:dilo">
-        <tr class="film-radek">
-            <td class="td1">
+        <tr class="dilo">
+            <td>
                 <xsl:apply-templates select="fd:obrazek"/>
             </td>
-            <td class="td2">
+            <td>
                 <h3>
                     <a href="{generate-id(.)}.html">
                         <xsl:value-of select="fd:nazev"/>
                     </a>
                 </h3>
             </td>
-            <td class="td3">
+            <td>
                 <xsl:apply-templates select="fd:umelci"/>
             </td>
-            <td class="td4">
+            <td>
                 <xsl:apply-templates select="fd:vydavatel/fd:nazev"/>
             </td>
-            <td class="td5">
+            <td>
                 <xsl:apply-templates select="fd:vydano/fd:rok"/>
             </td>
-            <td class="td6">
+            <td>
                 <xsl:apply-templates select="fd:typ"/>
             </td>
-            <td class="td8">
+            <td>
                 <xsl:apply-templates select="fd:zanry"/>
             </td>
-            <td class="td9">
+            <td>
                 <xsl:apply-templates select="fd:stav"/>
             </td>
-            <td class="td10">
+            <td>
                 <xsl:apply-templates select="fd:cena"/>
             </td>
-            <td class="td11">
+            <td>
                 <xsl:apply-templates select="fd:dostupnost"/>
             </td>
         </tr>
@@ -119,7 +117,7 @@
             <html>
                 <head>
                     <title>
-                        <xsl:text> Vinyl shop </xsl:text>
+                        <xsl:text>Vinyl Shop</xsl:text>
                         <xsl:apply-templates select="fd:nazev"/>
                     </title>
                     <link rel="stylesheet" type="text/css" href="styles.css"/>
@@ -127,9 +125,10 @@
                 <body>
                     <div id="page">
                         <div id="header">
+                            <h1>Vinyl Shop</h1>
                             <xsl:apply-templates select="//fd:autor"/>
                         </div>
-                        <div id="content-detail">
+                        <div class="detail">
                             <div class="info">
                                 <xsl:apply-templates select="fd:obrazek" mode="detail"/>
                                 <xsl:apply-templates select="fd:nazev" mode="detail"/>
@@ -150,7 +149,7 @@
                                 <a href="index.html" title="Zpět na hlavní stránku">Zpět</a>
                             </div>
                         </div>
-                        <div id="footer"> 2018 - Vinyl shop </div>
+                        <div id="footer">2018 - Vinyl shop</div>
                     </div>
                 </body>
             </html>
@@ -175,31 +174,23 @@
     </xsl:template>
     <xsl:template match="fd:obrazek">
         <xsl:if test="@src">
-            <div class="image-box">
-                <img src="images\{@src}" alt="{../fd:nazev}" title="{../fd:nazev}"
-                    class="img" height="150" width="150" />
-            </div>
+            <img src="images\{@src}" alt="{../fd:nazev}" title="{../fd:nazev}"
+                class="img" height="150" width="150" />
         </xsl:if>
         <xsl:if test="not(@src)">
-            <div class="plakat-miss">
-                <xsl:text>Obrázek není k dispozici</xsl:text>
-            </div>
+            <xsl:text>Obrázek není k dispozici</xsl:text>
         </xsl:if>
     </xsl:template>
 
     <!-- CONTENT DETAIL -->
     <xsl:template match="fd:obrazek" mode="detail">
-        <div class="plakat">
+        <div class="obrazek">
             <xsl:if test="@src">
-                <div class="image-box">
-                    <img src="images\{@src}" alt="{../fd:nazev}"
-                        title="{../fd:nazev}" class="img"/>
-                </div>
+                <img src="images\{@src}" alt="{../fd:nazev}"
+                    title="{../fd:nazev}" class="img"/>
             </xsl:if>
             <xsl:if test="not(@src)">
-                <div class="plakat-miss">
-                    <xsl:text>Obrázek není k dispozici</xsl:text>
-                </div>
+                <xsl:text>Obrázek není k dispozici</xsl:text>
             </xsl:if>
         </div>
     </xsl:template>
