@@ -226,16 +226,6 @@ table .film-radek {
 }
 
 .obsah {
-    clear: both;    
-}
-
-.part3 {
-    float: none;
     clear: both;
-}
-
-#content-detail .image-box img {
-	min-width: 145px;
-	
 }
 

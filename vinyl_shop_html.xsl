@@ -143,9 +143,6 @@
                                 <xsl:apply-templates select="fd:stav" mode="detail"/>
                                 <xsl:apply-templates select="fd:cena" mode="detail"/>
                                 <xsl:apply-templates select="fd:dostupnost" mode="detail"/>
-                            </div>
-                            
-                            <div class="part3">
                                 <xsl:apply-templates select="fd:obsah" mode="detail"/>
                             </div>
 
@@ -328,9 +325,21 @@
         </div>
     </xsl:template>
     
-    <xsl:template match="fd:skladba/fd:nazev" mode="detail">
+    <xsl:template match="fd:obsah" mode="detail">
         <div class="obsah">
-            <xsl:apply-templates/>
+            <xsl:for-each select="fd:vinyl">
+                <br />
+                <xsl:for-each select="fd:strana">
+                    <xsl:value-of select="fd:kod"/>
+                    <xsl:for-each select="fd:skladba">
+                        <xsl:if test="position() > 1">
+                            <xsl:value-of select="../fd:kod"/>
+                        </xsl:if>
+                        <xsl:value-of select="fd:cislo"/>
+                        <br />
+                    </xsl:for-each>
+                </xsl:for-each>
+            </xsl:for-each>
         </div>
     </xsl:template>
 </xsl:stylesheet>
