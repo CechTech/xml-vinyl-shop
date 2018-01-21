@@ -5,7 +5,7 @@
     <xsl:output name="html" encoding="UTF-8" doctype-system="http://www.w3.org/TR/html4/loose.dtd"
         doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"/>
 
-    <!-- MAINPAGE -->
+    <!-- index -->
     <xsl:template match="/">
         <xsl:result-document href="index.html" format="html">
             <html>
@@ -25,7 +25,7 @@
         </xsl:result-document>
     </xsl:template>
 
-    <!-- LAYOUT -->
+    <!-- layout -->
     <xsl:template match="fd:vinyl_shop">
         <div id="page">
             <div id="header">
@@ -39,7 +39,7 @@
         </div>
     </xsl:template>
 
-    <!-- HEADER -->
+    <!-- header -->
     <xsl:template match="fd:autor">
         <div id="autor">
             <div id="jmeno">
@@ -57,7 +57,7 @@
         </div>
     </xsl:template>
 
-    <!-- CONTENT - MAINPAGE -->
+    <!-- katalog -->
     <xsl:template match="fd:hudebni_dila">
         <table class="katalog">
             <tr class="nadpisy">
@@ -182,7 +182,7 @@
         </xsl:if>
     </xsl:template>
 
-    <!-- CONTENT DETAIL -->
+    <!-- detail -->
     <xsl:template match="fd:obrazek" mode="detail">
         <div class="obrazek">
             <xsl:if test="@src">
