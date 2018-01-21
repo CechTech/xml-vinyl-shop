@@ -166,8 +166,8 @@
     </xsl:template>
     <xsl:template match="fd:umelci">
             <xsl:for-each select="fd:umelec">
-                <xsl:value-of select="."/>
-                <br />
+                <xsl:if test="position() > 1">, </xsl:if>
+                <xsl:value-of select="." />
             </xsl:for-each>
     </xsl:template>
     <xsl:template match="fd:zanry">
