@@ -229,3 +229,10 @@ table .film-radek {
     clear: both;
 }
 
+.nazev-skladby {
+    padding-left: 15px; 
+}
+
+.delka-skladby {
+    padding-left: 20px; 
+}

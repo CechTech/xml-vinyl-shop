@@ -326,25 +326,26 @@
     </xsl:template>
     
     <xsl:template match="fd:obsah" mode="detail">
-        <div class="obsah">
+        <table class="obsah">
             <xsl:for-each select="fd:vinyl">
-                <br />
                 <xsl:for-each select="fd:strana">
-                    <xsl:value-of select="fd:kod"/>
                     <xsl:for-each select="fd:skladba">
-                        <xsl:if test="position() > 1">
-                            <xsl:value-of select="../fd:kod"/>
-                        </xsl:if>
-                        <xsl:value-of select="fd:cislo"/>
-                        <xsl:text> </xsl:text>
-                        <xsl:value-of select="fd:nazev"/>
-                        <xsl:text> </xsl:text>
-                        <xsl:value-of select="format-number(floor(fd:delka div 60) mod 60, '0')"/>
-                        <xsl:value-of select="format-number(fd:delka mod 60, ':00')"/>
-                        <br />
+                        <tr>
+                            <td class="kod-skladby">
+                                <xsl:value-of select="../fd:kod"/>
+                                <xsl:value-of select="fd:cislo"/>
+                            </td>
+                            <td class="nazev-skladby">
+                                <xsl:value-of select="fd:nazev"/>
+                            </td>                       
+                            <td class="delka-skladby">
+                                <xsl:value-of select="format-number(floor(fd:delka div 60) mod 60, '0')"/>
+                                <xsl:value-of select="format-number(fd:delka mod 60, ':00')"/>
+                            </td>   
+                        </tr>                   
                     </xsl:for-each>
                 </xsl:for-each>
             </xsl:for-each>
-        </div>
+        </table>
     </xsl:template>
 </xsl:stylesheet>
