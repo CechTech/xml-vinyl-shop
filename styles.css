@@ -25,7 +25,7 @@ h1 {
 }
 
 #page {
-	width: 1440px;
+	width: 1040px;
 	margin: 0 auto;
 }
 
@@ -48,18 +48,22 @@ h1 {
 	height: 50px;
 	color: #FFFFFF;
 	text-shadow: 1px 1px #222222;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .titulky > td {
     padding-left: 20px;    
 }
 
+td:last-child {
+    padding-right: 20px;
+}
+
 .film-radek {
 	text-align: center;
 	height: 170px;
 	background-color: #FFFFFF;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .film-radek > td {
@@ -68,7 +72,7 @@ h1 {
 }
 
 .td2 h3 a {
-	font-size: 15px;
+	font-size: 12px;
 	color: #060606;
 }
 
