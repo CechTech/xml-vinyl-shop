@@ -145,8 +145,8 @@
                                 <xsl:apply-templates select="fd:obsah" mode="detail"/>
                             </div>
 
-                            <div class="back-button">
-                                <a href="index.html" title="Zpět na hlavní stránku">Zpět</a>
+                            <div class="zpet">
+                                <a href="index.html">Zpět</a>
                             </div>
                         </div>
                         <div id="footer">2018 - Vinyl shop</div>
@@ -210,10 +210,12 @@
             <h3>
                 <xsl:text>Umělec</xsl:text>
             </h3>
-            <xsl:for-each select="fd:umelec">
-                <xsl:if test="position() > 1">, </xsl:if>
-                <xsl:value-of select="."/>
-            </xsl:for-each>
+            <p>
+                <xsl:for-each select="fd:umelec">
+                    <xsl:if test="position() > 1">, </xsl:if>
+                    <xsl:value-of select="."/>
+                </xsl:for-each>
+            </p>
         </div>
     </xsl:template>
     
@@ -235,7 +237,9 @@
             <h3>
                 <xsl:text>Vydáno</xsl:text>
             </h3>
-            <xsl:value-of select="fd:rok"/>
+            <p>
+                <xsl:value-of select="fd:rok"/>
+            </p>
         </div>
     </xsl:template>
     
@@ -257,7 +261,9 @@
             <h3>
                 <xsl:text>Typ</xsl:text>
             </h3>
-            <xsl:apply-templates/>
+            <p>
+                <xsl:apply-templates/>
+            </p>
         </div>
     </xsl:template>
     
@@ -267,7 +273,9 @@
             <h3>
                 <xsl:text>Formát</xsl:text>
             </h3>
-            <xsl:apply-templates/>
+            <p>
+                <xsl:apply-templates/>
+            </p>
         </div>
     </xsl:template>
     
@@ -277,10 +285,12 @@
             <h3>
                 <xsl:text>Žánr</xsl:text>
             </h3>
-            <xsl:for-each select="fd:zanr">
-                <xsl:if test="position() > 1">, </xsl:if>
-                <xsl:value-of select="."/>
-            </xsl:for-each>
+            <p>
+                <xsl:for-each select="fd:zanr">
+                    <xsl:if test="position() > 1">, </xsl:if>
+                    <xsl:value-of select="."/>
+                </xsl:for-each>
+            </p>
         </div>
     </xsl:template>
     
@@ -290,7 +300,9 @@
             <h3>
                 <xsl:text>Stav</xsl:text>
             </h3>
-            <xsl:apply-templates/>
+            <p>
+                <xsl:apply-templates/>
+            </p>
         </div>
     </xsl:template>
     
@@ -300,9 +312,11 @@
             <h3>
                 <xsl:text>Cena</xsl:text>
             </h3>
-            <xsl:apply-templates/>
-            <xsl:text> </xsl:text>
-            <xsl:value-of select="@mena"/>
+            <p>
+                <xsl:apply-templates/>
+                <xsl:text> </xsl:text>
+                <xsl:value-of select="@mena"/>
+            </p>
         </div>
     </xsl:template>
 
@@ -312,10 +326,13 @@
             <h3>
                 <xsl:text>Dostupnost</xsl:text>
             </h3>
-            <xsl:apply-templates/>
+            <p>
+                <xsl:apply-templates/>
+            </p>
         </div>
     </xsl:template>
     
+    <!-- obsah -->
     <xsl:template match="fd:obsah" mode="detail">
         <div class="obsah">
             <h3>

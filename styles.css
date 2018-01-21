@@ -78,7 +78,7 @@ td:last-child {
 	font-weight: bold;
 	color: #FFFFFF;
 }
-.back-button {
+.zpet {
 	text-align: center;
 	padding: 10px;
 	background-color: #940A0A;
@@ -87,7 +87,7 @@ td:last-child {
 	display: block;
 }
 
-.back-button a {
+.zpet a {
 	color: #FFFFFF;
 }
 
