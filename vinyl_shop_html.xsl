@@ -336,6 +336,11 @@
                             <xsl:value-of select="../fd:kod"/>
                         </xsl:if>
                         <xsl:value-of select="fd:cislo"/>
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="fd:nazev"/>
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="format-number(floor(fd:delka div 60) mod 60, '0')"/>
+                        <xsl:value-of select="format-number(fd:delka mod 60, ':00')"/>
                         <br />
                     </xsl:for-each>
                 </xsl:for-each>
