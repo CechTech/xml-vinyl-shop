@@ -227,12 +227,14 @@ table .film-radek {
 
 .obsah {
     clear: both;
+    padding-top: 20px;
+    margin-left: 215px;
 }
 
 .nazev-skladby {
-    padding-left: 15px; 
+    padding-left: 10px; 
 }
 
 .delka-skladby {
-    padding-left: 20px; 
+    padding-left: 30px; 
 }

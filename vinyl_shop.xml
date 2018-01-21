@@ -211,7 +211,7 @@
                         <kod>C</kod>
                         <skladba>
                             <nazev>Chubrub</nazev>
-                            <delka jednotka="s">625</delka>
+                            <delka jednotka="s">425</delka>
                         </skladba>                       
                     </strana>
                     <strana>
@@ -386,14 +386,14 @@
                         <kod>A</kod>
                         <skladba>
                             <nazev>Star Trails</nazev>
-                            <delka jednotka="s">725</delka>
+                            <delka jednotka="s">425</delka>
                         </skladba>
                     </strana>
                     <strana>
                         <kod>B</kod>
                         <skladba>
                             <nazev>Hybrid</nazev>
-                            <delka jednotka="s">860</delka>
+                            <delka jednotka="s">360</delka>
                         </skladba>     
                     </strana>      
                 </vinyl>
@@ -448,7 +448,7 @@
                         <kod>C</kod>
                         <skladba>
                             <nazev>Jupiter</nazev>
-                            <delka jednotka="s">625</delka>
+                            <delka jednotka="s">425</delka>
                         </skladba>                       
                     </strana>
                     <strana>

@@ -326,26 +326,31 @@
     </xsl:template>
     
     <xsl:template match="fd:obsah" mode="detail">
-        <table class="obsah">
-            <xsl:for-each select="fd:vinyl">
-                <xsl:for-each select="fd:strana">
-                    <xsl:for-each select="fd:skladba">
-                        <tr>
-                            <td class="kod-skladby">
-                                <xsl:value-of select="../fd:kod"/>
-                                <xsl:value-of select="fd:cislo"/>
-                            </td>
-                            <td class="nazev-skladby">
-                                <xsl:value-of select="fd:nazev"/>
-                            </td>                       
-                            <td class="delka-skladby">
-                                <xsl:value-of select="format-number(floor(fd:delka div 60) mod 60, '0')"/>
-                                <xsl:value-of select="format-number(fd:delka mod 60, ':00')"/>
-                            </td>   
-                        </tr>                   
+        <div class="obsah">
+            <h3>
+                <xsl:text>Skladby</xsl:text>
+            </h3>
+            <table>
+                <xsl:for-each select="fd:vinyl">
+                    <xsl:for-each select="fd:strana">
+                        <xsl:for-each select="fd:skladba">
+                            <tr>
+                                <td class="kod-skladby">
+                                    <xsl:value-of select="../fd:kod"/>
+                                    <xsl:value-of select="fd:cislo"/>
+                                </td>
+                                <td class="nazev-skladby">
+                                    <xsl:value-of select="fd:nazev"/>
+                                </td>                       
+                                <td class="delka-skladby">
+                                    <xsl:value-of select="format-number(floor(fd:delka div 60) mod 60, '0')"/>
+                                    <xsl:value-of select="format-number(fd:delka mod 60, ':00')"/>
+                                </td>   
+                            </tr>                   
+                        </xsl:for-each>
                     </xsl:for-each>
                 </xsl:for-each>
-            </xsl:for-each>
-        </table>
+            </table>
+        </div>
     </xsl:template>
 </xsl:stylesheet>
