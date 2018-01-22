@@ -10,7 +10,7 @@
     <hudebni_dila>
         <dilo>
             <nazev>Clockwork</nazev>
-            <obrazek src="./clockwork.jpg" />
+            <obrazek src="images/clockwork.jpg" />
             <umelci>
                 <umelec>Stakka</umelec>
                 <umelec>Skynet</umelec>
@@ -79,7 +79,7 @@
         </dilo>
         <dilo>
             <nazev>Dark Side Of The Moon</nazev>
-            <obrazek src="./dark_side_of_the_moon.jpg" />
+            <obrazek src="images/dark_side_of_the_moon.jpg" />
             <umelci>
                 <umelec>Pink Floyd</umelec>
             </umelci>
@@ -163,7 +163,7 @@
         </dilo>
         <dilo>
             <nazev>Travel The Galaxy</nazev>
-            <obrazek src="./travel_the_galaxy.jpg" />
+            <obrazek src="images/travel_the_galaxy.jpg" />
             <umelci>
                 <umelec>Ed Rush</umelec>
                 <umelec>Optical</umelec>
@@ -242,7 +242,7 @@
         </dilo>
         <dilo>
             <nazev>Clandestino</nazev>
-            <obrazek src="./clandestino.jpg" />
+            <obrazek src="images/clandestino.jpg" />
             <umelci>
                 <umelec>Manu Chao</umelec>
             </umelci>
@@ -357,7 +357,7 @@
         </dilo>
         <dilo>
             <nazev>Star Trails / Hybrid</nazev>
-            <obrazek src="./star_trails_hybrid.jpg" />
+            <obrazek src="images/star_trails_hybrid.jpg" />
             <umelci>
                 <umelec>Kemal</umelec>
                 <umelec>Rob Data</umelec>
@@ -401,7 +401,7 @@
         </dilo>
         <dilo>
             <nazev>FOUR:FIT EP 08</nazev>
-            <obrazek src="./four_fit_ep_08.jpg" />
+            <obrazek src="images/four_fit_ep_08.jpg" />
             <umelci>
                 <umelec>Marcus Intalex</umelec>
             </umelci>

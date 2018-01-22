@@ -174,7 +174,7 @@
     </xsl:template>
     <xsl:template match="fd:obrazek">
         <xsl:if test="@src">
-            <img src="images\{@src}" alt="{../fd:nazev}" title="{../fd:nazev}"
+            <img src="{@src}" alt="{../fd:nazev}" title="{../fd:nazev}"
                 class="img" height="150" width="150" />
         </xsl:if>
         <xsl:if test="not(@src)">
@@ -186,7 +186,7 @@
     <xsl:template match="fd:obrazek" mode="detail">
         <div class="obrazek">
             <xsl:if test="@src">
-                <img src="images\{@src}" alt="{../fd:nazev}"
+                <img src="{@src}" alt="{../fd:nazev}"
                     title="{../fd:nazev}" class="img"/>
             </xsl:if>
             <xsl:if test="not(@src)">

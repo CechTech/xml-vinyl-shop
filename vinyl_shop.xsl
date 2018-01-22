@@ -41,29 +41,31 @@
 
                 <fo:flow flow-name="xsl-region-body">
                     <fo:block font-size="32pt" font-weight="bold" text-align="center"
-                        space-before="50pt" space-before.conditionality="retain" space-after="20px" id="seznam">
+                        space-before="60pt" space-before.conditionality="retain" space-after="30px" id="seznam">
                         <xsl:text>Vinyl Shop</xsl:text>
                     </fo:block>
 
                     <fo:block text-align="center" space-before="35pt" space-after="35pt">
                         <fo:leader leader-length="0.8in" leader-pattern="rule"
-                            alignment-baseline="middle" rule-thickness="0.8pt" color="black"/>
+                            alignment-baseline="middle" rule-thickness="0.7pt" color="black"/>
                     </fo:block>
 
                     <fo:block font-size="25pt" font-weight="bold" text-align="center"
                         space-before="50pt" space-before.conditionality="retain" space-after="20px">
+                        <xsl:text>Autor: </xsl:text>
                         <xsl:value-of select="fd:vinyl_shop/fd:autor/fd:jmeno"/>
                         <xsl:text> </xsl:text>
                         <xsl:value-of select="fd:vinyl_shop/fd:autor/fd:prijmeni"/>
                     </fo:block>
 
-                    <fo:block font-size="14pt" space-after="10pt" text-align="center">
+                    <fo:block font-size="14pt" space-after="20pt" text-align="center">
+                        <xsl:text>Email: </xsl:text>
                         <xsl:apply-templates select="//fd:email"/>
                     </fo:block>
 
 
                     <!-- tabulka desek -->
-                    <fo:block font-size="10pt" margin-top="30pt">
+                    <fo:block font-size="10pt" margin-top="35pt">
                         <fo:table width="155mm" border="1pt" border-style="solid"
                             background-color="#FFFFFF" display-align="center">
                             <fo:table-column column-width="40%"/>
@@ -252,7 +254,7 @@
     <xsl:template match="fd:obrazek" mode="detail">
         <xsl:if test="@src">
             <fo:block text-align="right">
-                <fo:external-graphic src="url('images\{@src}')"/>
+                <fo:external-graphic src="url('{@src}')"/>
             </fo:block>
         </xsl:if>
     </xsl:template>
