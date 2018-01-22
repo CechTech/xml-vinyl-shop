@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" type="xml"?>
+<article xmlns="http://docbook.org/ns/docbook" version="5.0">
+    <info>
+        <title>Katalog obchodu s gramodeskami</title>
+        <subtitle>Dokumentace k semestrální práci XML 4IZ238</subtitle>
+        <author>
+            <personname>
+                <firstname>Jiří</firstname>
+                <surname>Čech</surname>
+            </personname>
+            <email>cecj02@vse.cz</email>
+        </author>
+    </info>
+    
+    <sect1>
+        <title>Zadání</title>
+        
+        <para>XML dokument eviduje gramofonové desky pro obchod.</para>
+        
+        <para>U každého díla jsou uchovávány informace: <itemizedlist>
+            <listitem>
+                <para>název díla</para>
+            </listitem>
+            <listitem>
+                <para>obrázek</para>
+            </listitem>
+            <listitem>
+                <para>umělci</para>
+            </listitem>
+            <listitem>
+                <para>vydavatel</para>
+            </listitem>
+            <listitem>
+                <para>datum vydání</para>
+            </listitem>
+            <listitem>
+                <para>typ díla</para>
+            </listitem>
+            <listitem>
+                <para>formát nosiče</para>
+            </listitem>
+            <listitem>
+                <para>žánry</para>
+            </listitem>
+            <listitem>
+                <para>stav díla</para>
+            </listitem>
+            <listitem>
+                <para>cena</para>
+            </listitem>
+            <listitem>
+                <para>dostupnost</para>
+            </listitem>
+            <listitem>
+                <para>obsah</para>
+            </listitem>
+        </itemizedlist>
+        </para>
+    </sect1>
+    
+    <sect1>
+        <title>XML Schéma</title>
+        
+        <para>XML schéma popisuje strukturu, kterou musejí ke schématu provázané XML dokumenty dodržovat. 
+            XML schéma definuje entity a jejich atributy, které se mohou v dokumentech vyskytovat. 
+            Dále popisuje jejich vlastnosti, jako jejich pořadí, množství výskytů a datové typy. 
+            Následná validace XML dokumentu pomocí provázaného XML schématu nám potvrdí, zda XML dokument 
+            dodržuje stanovený formát a strukturu.</para>
+        <para>Schéma pro XML dokument <filename>vinyl_shop.xml</filename> nalezneme v 
+            souboru <filename>vinyl_shop.xsd</filename>. Při vytváření XML schématu byla 
+            použita technologie W3C XML Schema.</para>
+        
+        <para>Pro obchod s gramofonovými deskami je vhodné se vyhnout duplicitních položek. Zde však vzniká 
+            problém s velmi velkým množstvím nejrůznějších verzí pro stejné hudební dílo. Integrita tedy nemohla 
+            být kontrolována pomocí názvu díla. Jediná vždy unikátní hodnota pro každou verzi díla je její kód, 
+            proto datový typ <emphasis>kod</emphasis> je hlavním elementem entitní 
+            integrity.</para>
+        <blockquote>
+            <literallayout><code><![CDATA[
+    <xs:key name="unikatni_kod_dila">
+        <xs:selector xpath="ns:dilo"/>
+         <xs:field xpath="ns:kod"/>
+    </xs:key>
+        ]]></code></literallayout>
+        </blockquote>
+        
+        <para>Některé informace (<emphasis>země, den a měsíc vydání</emphasis>) nemusí být uvedeny, proto jsou 
+            nepovinné. Datové typy string jsou omezeny maximálním počtem znaků.</para>
+        <para>Číselné datové typy (<emphasis>den a měsíc</emphasis>) jsou omezeny intervalovým rozpětím. 
+            V případě atributů <emphasis>jednotka a mena</emphasis> je využita enumerace jako například:</para>
+        <blockquote>
+            <literallayout><code><![CDATA[
+    <xs:simpleType name="menaType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CZK"/>
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="GBP"/>
+        </xs:restriction>
+    </xs:simpleType>
+        ]]></code></literallayout>
+        </blockquote>
+        
+        <para>Další enumerace byla využita pro <emphasis>dostupnost díla (skladem/na obědnání), typ díla 
+        (album/ep/single) a stav poškození nosiče (dle systému největší vinylové burzy na světě 
+        discogs.com):</emphasis></para>
+        <blockquote>
+            <literallayout><code><![CDATA[
+    <xs:simpleType name="stavType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="M" />
+            <xs:enumeration value="NM" />
+            <xs:enumeration value="VG+" />
+            <xs:enumeration value="VG" />
+            <xs:enumeration value="G+" />
+            <xs:enumeration value="G" />
+            <xs:enumeration value="F" />
+            <xs:enumeration value="P" />
+        </xs:restriction>
+    </xs:simpleType>
+        ]]></code></literallayout>
+        </blockquote>
+       
+        <para>Element <emphasis>hudebni_dila</emphasis> obsahuje elementy <emphasis>dilo</emphasis>, předpokládá 
+            alespoň 1 výskyt a maximální počet výskytů je neomezen pomocí hodnoty <emphasis>"unbounded"</emphasis>.
+        </para>    
+    </sect1>
+    
+    <sect1>
+        <title>XSL transformace</title>
+        <para>XSL nám umožňuje definovat více stylů pro jeden XML soubor a měnit tak vzhled XML dokumentů bez 
+            zásahu do originálního dokumentu.</para>       
+        <sect2>
+            <title>XSLT - HTML</title>
+            <para>
+                Soubor se skládá z jednotlivých šablon, které jsou pomocí dotazovacího jazyka XPath 
+                přiřazovány k jednotlivým elementům původního XML souboru a určují, 
+                jakým způsobem se dané elementy zpracují. 
+                Styl pro transformaci souboru <filename>vinyl_shop.xml</filename> do podoby html je 
+                v souboru <filename>vinyl_shop_html.xsl</filename>.</para>
+            <para>Výstupem této transformace je katalog gramodesek na hlavní stránce 
+                <filename>index.html</filename>. Dále jsou vytvořeny stránky s detailem 
+                každého hudebního díla a jsou provázané odkazy zpět na hlavní stránku. 
+                Pomoci funkce <emphasis>generate-id</emphasis> jsou vytvořené unikátní názvy stránek. 
+                v souboru <filename>styles.css</filename> jsou kaskádové styly, které upravují vzhled všech stránek. 
+            </para>
+            
+            <para>V případě, kdy lze očekávát větší množství umělců, nebo hudebních žánrů je využita podmínka if, 
+            která upravuje výstup jednotlivých položek a odděluje je čárkou.</para>
+            <blockquote>
+                <literallayout><code><![CDATA[
+    <xsl:template match="fd:umelci">
+            <xsl:for-each select="fd:umelec">
+                <xsl:if test="position() > 1">, </xsl:if>
+                <xsl:value-of select="." />
+            </xsl:for-each>
+    </xsl:template>
+            ]]></code></literallayout>
+            </blockquote>
+        </sect2>
+        
+        <sect2>
+            <title>XSLT procesor</title>
+            <para>Pro transformaci základního XML dokumentu 
+                <filename>vinyl_shop.xml</filename> do formátu HTML pomocí stylu 
+                <filename>vinyl_shop_html.xsl</filename> je zapotřebí XSLT procesor. Byl použit Saxon-EE 9.7.0.19 
+                integrovaný v editoru oXygen.
+            </para>
+        </sect2>
+        
+        <sect2>
+            <title>XSL FO - formátovací objekty</title>
+            <para> XSL FO definuje styly pro převod dokumentu <filename>vinyl_shop.xml</filename> do
+                formátovacích objektů, které následně umožňují dokument převést do formátu PDF a mnoha dalších. 
+                Je uložen v souboru <filename>vinyl_shop_fo.xsl</filename>. Opět se jedná o šablony, které 
+                se aplikují na jednotlivé elementy původního XML dokumentu a generují formátovací objekty.
+            </para>
+            <para>Výstupem je PDF dokument s informacemi o nabídce gramofonových desek.</para>
+        </sect2>
+        
+        <sect2>
+            <title>FO procesor</title>
+            <para>XML dokument se nejprve pomocí XSLT procesoru transformuje na formátovací objekty. Ty se následně 
+                zpracují FO procesorem a vytvoří tak výsledný dokument PDF. 
+                Byl použit FO procesor <application>Apache FOP</application> 
+                integrovaný v oXygenu.
+            </para>
+        </sect2>
+    </sect1>
+    <sect1>
+        <title>Dokumentace</title>
+        <para>Tato dokumentace k semestální práci byla vytvořena ve formátu DocBook a vygenerována do výstupů HTML a 
+            PDF.</para>
+    </sect1>
+</article>

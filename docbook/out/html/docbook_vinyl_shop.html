@@ -1,0 +1,78 @@
+<html xmlns:ng="http://docbook.org/docbook-ng"><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Katalog obchodu s gramodeskami</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article"><div class="titlepage"><div><div><h1 class="title"><a name="d5e1"></a>Katalog obchodu s gramodeskami</h1></div><div><h3 class="subtitle"><i>Dokumentace k semestr&aacute;ln&iacute; pr&aacute;ci XML 4IZ238</i></h3></div><div><div class="author"><h3 class="author"><span class="firstname">Ji&#345;&iacute;</span> <span class="surname">&#268;ech</span></h3><code class="email">&lt;<a class="email" href="mailto:cecj02@vse.cz">cecj02@vse.cz</a>&gt;</code></div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="sect1"><a href="#d5e10">Zad&aacute;n&iacute;</a></span></dt><dt><span class="sect1"><a href="#d5e39">XML Sch&eacute;ma</a></span></dt><dt><span class="sect1"><a href="#d5e67">XSL transformace</a></span></dt><dd><dl><dt><span class="sect2"><a href="#d5e70">XSLT - HTML</a></span></dt><dt><span class="sect2"><a href="#d5e83">XSLT procesor</a></span></dt><dt><span class="sect2"><a href="#d5e88">XSL FO - form&aacute;tovac&iacute; objekty</a></span></dt><dt><span class="sect2"><a href="#d5e94">FO procesor</a></span></dt></dl></dd><dt><span class="sect1"><a href="#d5e98">Dokumentace</a></span></dt></dl></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e10"></a>Zad&aacute;n&iacute;</h2></div></div></div><p>XML dokument eviduje gramofonov&eacute; desky pro obchod.</p><p>U ka&#382;d&eacute;ho d&iacute;la jsou uchov&aacute;v&aacute;ny informace: </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>n&aacute;zev d&iacute;la</p></li><li class="listitem"><p>obr&aacute;zek</p></li><li class="listitem"><p>um&#283;lci</p></li><li class="listitem"><p>vydavatel</p></li><li class="listitem"><p>datum vyd&aacute;n&iacute;</p></li><li class="listitem"><p>typ d&iacute;la</p></li><li class="listitem"><p>form&aacute;t nosi&#269;e</p></li><li class="listitem"><p>&#382;&aacute;nry</p></li><li class="listitem"><p>stav d&iacute;la</p></li><li class="listitem"><p>cena</p></li><li class="listitem"><p>dostupnost</p></li><li class="listitem"><p>obsah</p></li></ul></div><p>
+        </p></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e39"></a>XML Sch&eacute;ma</h2></div></div></div><p>XML sch&eacute;ma popisuje strukturu, kterou musej&iacute; ke sch&eacute;matu prov&aacute;zan&eacute; XML dokumenty dodr&#382;ovat. 
+            XML sch&eacute;ma definuje entity a jejich atributy, kter&eacute; se mohou v dokumentech vyskytovat. 
+            D&aacute;le popisuje jejich vlastnosti, jako jejich po&#345;ad&iacute;, mno&#382;stv&iacute; v&yacute;skyt&#367; a datov&eacute; typy. 
+            N&aacute;sledn&aacute; validace XML dokumentu pomoc&iacute; prov&aacute;zan&eacute;ho XML sch&eacute;matu n&aacute;m potvrd&iacute;, zda XML dokument 
+            dodr&#382;uje stanoven&yacute; form&aacute;t a strukturu.</p><p>Sch&eacute;ma pro XML dokument <code class="filename">vinyl_shop.xml</code> nalezneme v 
+            souboru <code class="filename">vinyl_shop.xsd</code>. P&#345;i vytv&aacute;&#345;en&iacute; XML sch&eacute;matu byla 
+            pou&#382;ita technologie W3C XML Schema.</p><p>Pro obchod s gramofonov&yacute;mi deskami je vhodn&eacute; se vyhnout duplicitn&iacute;ch polo&#382;ek. Zde v&#353;ak vznik&aacute; 
+            probl&eacute;m s velmi velk&yacute;m mno&#382;stv&iacute;m nejr&#367;zn&#283;j&#353;&iacute;ch verz&iacute; pro stejn&eacute; hudebn&iacute; d&iacute;lo. Integrita tedy nemohla 
+            b&yacute;t kontrolov&aacute;na pomoc&iacute; n&aacute;zvu d&iacute;la. Jedin&aacute; v&#382;dy unik&aacute;tn&iacute; hodnota pro ka&#382;dou verzi d&iacute;la je jej&iacute; k&oacute;d, 
+            proto datov&yacute; typ <span class="emphasis"><em>kod</em></span> je hlavn&iacute;m elementem entitn&iacute; 
+            integrity.</p><div class="blockquote"><blockquote class="blockquote"><div class="literallayout"><p><code class="code"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:key&nbsp;name="unikatni_kod_dila"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:selector&nbsp;xpath="ns:dilo"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:field&nbsp;xpath="ns:kod"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:key&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></p></div></blockquote></div><p>N&#283;kter&eacute; informace (<span class="emphasis"><em>zem&#283;, den a m&#283;s&iacute;c vyd&aacute;n&iacute;</em></span>) nemus&iacute; b&yacute;t uvedeny, proto jsou 
+            nepovinn&eacute;. Datov&eacute; typy string jsou omezeny maxim&aacute;ln&iacute;m po&#269;tem znak&#367;.</p><p>&#268;&iacute;seln&eacute; datov&eacute; typy (<span class="emphasis"><em>den a m&#283;s&iacute;c</em></span>) jsou omezeny intervalov&yacute;m rozp&#283;t&iacute;m. 
+            V p&#345;&iacute;pad&#283; atribut&#367; <span class="emphasis"><em>jednotka a mena</em></span> je vyu&#382;ita enumerace jako nap&#345;&iacute;klad:</p><div class="blockquote"><blockquote class="blockquote"><div class="literallayout"><p><code class="code"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:simpleType&nbsp;name="menaType"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:restriction&nbsp;base="xs:string"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="CZK"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="EUR"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="GBP"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:restriction&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:simpleType&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></p></div></blockquote></div><p>Dal&#353;&iacute; enumerace byla vyu&#382;ita pro <span class="emphasis"><em>dostupnost d&iacute;la (skladem/na ob&#283;dn&aacute;n&iacute;), typ d&iacute;la 
+        (album/ep/single) a stav po&#353;kozen&iacute; nosi&#269;e (dle syst&eacute;mu nejv&#283;t&#353;&iacute; vinylov&eacute; burzy na sv&#283;t&#283; 
+        discogs.com):</em></span></p><div class="blockquote"><blockquote class="blockquote"><div class="literallayout"><p><code class="code"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:simpleType&nbsp;name="stavType"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:restriction&nbsp;base="xs:string"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="M"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="NM"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="VG+"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="VG"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="G+"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="G"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="F"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:enumeration&nbsp;value="P"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:restriction&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:simpleType&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></p></div></blockquote></div><p>Element <span class="emphasis"><em>hudebni_dila</em></span> obsahuje elementy <span class="emphasis"><em>dilo</em></span>, p&#345;edpokl&aacute;d&aacute; 
+            alespo&#328; 1 v&yacute;skyt a maxim&aacute;ln&iacute; po&#269;et v&yacute;skyt&#367; je neomezen pomoc&iacute; hodnoty <span class="emphasis"><em>"unbounded"</em></span>.
+        </p></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e67"></a>XSL transformace</h2></div></div></div><p>XSL n&aacute;m umo&#382;&#328;uje definovat v&iacute;ce styl&#367; pro jeden XML soubor a m&#283;nit tak vzhled XML dokument&#367; bez 
+            z&aacute;sahu do origin&aacute;ln&iacute;ho dokumentu.</p><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a name="d5e70"></a>XSLT - HTML</h3></div></div></div><p>
+                Soubor se skl&aacute;d&aacute; z jednotliv&yacute;ch &#353;ablon, kter&eacute; jsou pomoc&iacute; dotazovac&iacute;ho jazyka XPath 
+                p&#345;i&#345;azov&aacute;ny k jednotliv&yacute;m element&#367;m p&#367;vodn&iacute;ho XML souboru a ur&#269;uj&iacute;, 
+                jak&yacute;m zp&#367;sobem se dan&eacute; elementy zpracuj&iacute;. 
+                Styl pro transformaci souboru <code class="filename">vinyl_shop.xml</code> do podoby html je 
+                v souboru <code class="filename">vinyl_shop_html.xsl</code>.</p><p>V&yacute;stupem t&eacute;to transformace je katalog gramodesek na hlavn&iacute; str&aacute;nce 
+                <code class="filename">index.html</code>. D&aacute;le jsou vytvo&#345;eny str&aacute;nky s detailem 
+                ka&#382;d&eacute;ho hudebn&iacute;ho d&iacute;la a jsou prov&aacute;zan&eacute; odkazy zp&#283;t na hlavn&iacute; str&aacute;nku. 
+                Pomoci funkce <span class="emphasis"><em>generate-id</em></span> jsou vytvo&#345;en&eacute; unik&aacute;tn&iacute; n&aacute;zvy str&aacute;nek. 
+                v souboru <code class="filename">styles.css</code> jsou kask&aacute;dov&eacute; styly, kter&eacute; upravuj&iacute; vzhled v&#353;ech str&aacute;nek. 
+            </p><p>V p&#345;&iacute;pad&#283;, kdy lze o&#269;ek&aacute;v&aacute;t v&#283;t&#353;&iacute; mno&#382;stv&iacute; um&#283;lc&#367;, nebo hudebn&iacute;ch &#382;&aacute;nr&#367; je vyu&#382;ita podm&iacute;nka if, 
+            kter&aacute; upravuje v&yacute;stup jednotliv&yacute;ch polo&#382;ek a odd&#283;luje je &#269;&aacute;rkou.</p><div class="blockquote"><blockquote class="blockquote"><div class="literallayout"><p><code class="code"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;xsl:template&nbsp;match="fd:umelci"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xsl:for-each&nbsp;select="fd:umelec"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xsl:if&nbsp;test="position()&nbsp;&gt;&nbsp;1"&gt;,&nbsp;&lt;/xsl:if&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xsl:value-of&nbsp;select="."&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xsl:for-each&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xsl:template&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></p></div></blockquote></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a name="d5e83"></a>XSLT procesor</h3></div></div></div><p>Pro transformaci z&aacute;kladn&iacute;ho XML dokumentu 
+                <code class="filename">vinyl_shop.xml</code> do form&aacute;tu HTML pomoc&iacute; stylu 
+                <code class="filename">vinyl_shop_html.xsl</code> je zapot&#345;eb&iacute; XSLT procesor. Byl pou&#382;it Saxon-EE 9.7.0.19 
+                integrovan&yacute; v editoru oXygen.
+            </p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a name="d5e88"></a>XSL FO - form&aacute;tovac&iacute; objekty</h3></div></div></div><p> XSL FO definuje styly pro p&#345;evod dokumentu <code class="filename">vinyl_shop.xml</code> do
+                form&aacute;tovac&iacute;ch objekt&#367;, kter&eacute; n&aacute;sledn&#283; umo&#382;&#328;uj&iacute; dokument p&#345;ev&eacute;st do form&aacute;tu PDF a mnoha dal&#353;&iacute;ch. 
+                Je ulo&#382;en v souboru <code class="filename">vinyl_shop_fo.xsl</code>. Op&#283;t se jedn&aacute; o &#353;ablony, kter&eacute; 
+                se aplikuj&iacute; na jednotliv&eacute; elementy p&#367;vodn&iacute;ho XML dokumentu a generuj&iacute; form&aacute;tovac&iacute; objekty.
+            </p><p>V&yacute;stupem je PDF dokument s informacemi o nab&iacute;dce gramofonov&yacute;ch desek.</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a name="d5e94"></a>FO procesor</h3></div></div></div><p>XML dokument se nejprve pomoc&iacute; XSLT procesoru transformuje na form&aacute;tovac&iacute; objekty. Ty se n&aacute;sledn&#283; 
+                zpracuj&iacute; FO procesorem a vytvo&#345;&iacute; tak v&yacute;sledn&yacute; dokument PDF. 
+                Byl pou&#382;it FO procesor <span class="application">Apache FOP</span> 
+                integrovan&yacute; v oXygenu.
+            </p></div></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e98"></a>Dokumentace</h2></div></div></div><p>Tato dokumentace k semest&aacute;ln&iacute; pr&aacute;ci byla vytvo&#345;ena ve form&aacute;tu DocBook a vygenerov&aacute;na do v&yacute;stup&#367; HTML a 
+            PDF.</p></div></div></body></html>
