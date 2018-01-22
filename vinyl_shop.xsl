@@ -45,7 +45,6 @@
                         <xsl:text>Vinyl Shop</xsl:text>
                     </fo:block>
 
-
                     <fo:block text-align="center" space-before="35pt" space-after="35pt">
                         <fo:leader leader-length="5in" leader-pattern="rule"
                             alignment-baseline="middle" rule-thickness="0.8pt" color="black"/>
@@ -63,14 +62,14 @@
                     </fo:block>
 
 
-                    <!-- TABULKA FILMU -->
+                    <!-- tabulka desek -->
                     <fo:block font-size="10pt" margin-top="30pt">
                         <fo:table width="155mm" border="1pt" border-style="solid"
                             background-color="#F5E6F6" display-align="center">
                             <fo:table-column column-width="40%"/>
-                            <fo:table-column column-width="20%"/>
-                            <fo:table-column column-width="20%"/>
-                            <fo:table-column column-width="20%"/>
+                            <fo:table-column column-width="25%"/>
+                            <fo:table-column column-width="25%"/>
+                            <fo:table-column column-width="10%"/>
                             <fo:table-header>
                                 <fo:table-row border-style="solid" border-width="2pt"
                                     border-color="black" font-weight="bold" font-size="12pt"
@@ -81,21 +80,20 @@
                                     </fo:table-cell>
                                     <fo:table-cell padding="2pt" border-style="solid"
                                         border-color="black">
-                                        <fo:block>Rok natočení</fo:block>
+                                        <fo:block>Umělci</fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell padding="2pt" border-style="solid"
                                         border-color="black">
-                                        <fo:block>Režie</fo:block>
+                                        <fo:block>Vydavatel</fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell padding="2pt" border-style="solid"
                                         border-color="black">
-                                        <fo:block>Hodnocení</fo:block>
+                                        <fo:block>Rok</fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                             </fo:table-header>
                             <fo:table-body>
                                 <xsl:for-each select="//fd:dilo">
-                                    <!-- <xsl:sort select="//fd:film/fd:nazev_cesky"/> -->
                                     <xsl:call-template name="dila"/>
                                 </xsl:for-each>
                             </fo:table-body>
@@ -120,13 +118,13 @@
                 <xsl:apply-templates select="fd:nazev"/>
             </fo:table-cell>
             <fo:table-cell padding="4pt" border-style="solid" border-width="1pt">
-                <xsl:apply-templates select="fd:rok"/>
+                <xsl:apply-templates select="fd:umelci"/>
             </fo:table-cell>
             <fo:table-cell padding="4pt" border-style="solid" border-width="1pt">
-                <xsl:apply-templates select="fd:typ"/>
+                <xsl:apply-templates select="fd:vydavatel/fd:nazev"/>
             </fo:table-cell>
             <fo:table-cell padding="4pt" border-style="solid" border-width="1pt">
-                <xsl:apply-templates select="fd:stav"/>
+                <xsl:apply-templates select="fd:vydano/fd:rok"/>
             </fo:table-cell>
         </fo:table-row>
     </xsl:template>
@@ -138,17 +136,20 @@
             </fo:basic-link>
         </fo:block>
     </xsl:template>
-    <xsl:template match="fd:rok">
+    <xsl:template match="fd:umelci">
+        <fo:block font-size="10pt" text-align="center">
+            <xsl:for-each select="fd:umelec">
+                <xsl:if test="position() > 1">, </xsl:if>
+                <xsl:value-of select="."/>
+            </xsl:for-each>
+        </fo:block>
+    </xsl:template>
+    <xsl:template match="fd:vydavatel/fd:nazev">
         <fo:block font-size="10pt" text-align="center">
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    <xsl:template match="fd:typ">
-        <fo:block font-size="10pt" text-align="center">
-            <xsl:apply-templates/>
-        </fo:block>
-    </xsl:template>
-    <xsl:template match="fd:stav">
+    <xsl:template match="fd:vydano/fd:rok">
         <fo:block font-size="10pt" text-align="center">
             <xsl:apply-templates/>
         </fo:block>
@@ -156,22 +157,26 @@
 
     <!-- DETAIL FILMU -->
     <xsl:template match="fd:hudebni_dila">
-        <xsl:apply-templates select="fd:film" mode="detail">
+        <xsl:apply-templates select="fd:dilo" mode="detail">
             <xsl:sort select="fd:nazev" data-type="text" lang="cs"/>
         </xsl:apply-templates>
     </xsl:template>
     <xsl:template match="fd:dilo" mode="detail">
         <fo:block keep-together="always" id="{generate-id(.)}" font-size="12pt">
-            <xsl:apply-templates select="fd:nazev" mode="detail"/>
-
-            <fo:table>
+             <fo:table>
                 <fo:table-body>
                     <fo:table-row>
                         <fo:table-cell>
                             <xsl:apply-templates select="fd:nazev" mode="detail"/>
-                            <xsl:apply-templates select="fd:rok" mode="detail"/>
+                            <xsl:apply-templates select="fd:umelci" mode="detail"/> 
+                            <xsl:apply-templates select="fd:vydavatel" mode="detail"/>
+                            <xsl:apply-templates select="fd:vydano" mode="detail"/>
+                            <xsl:apply-templates select="fd:vydavatel/fd:zeme" mode="detail"/>
                             <xsl:apply-templates select="fd:typ" mode="detail"/>
+                            <xsl:apply-templates select="fd:format" mode="detail"/>
+                            <xsl:apply-templates select="fd:zanry" mode="detail"/>
                             <xsl:apply-templates select="fd:stav" mode="detail"/>
+                            <xsl:apply-templates select="fd:cena" mode="detail"/>
                         </fo:table-cell>
                         <fo:table-cell>
                             <xsl:apply-templates select="fd:obrazek" mode="detail"/>
@@ -179,9 +184,7 @@
                     </fo:table-row>
                 </fo:table-body>
             </fo:table>
-            <fo:inline font-weight="bold">Produkce:</fo:inline>
-             <xsl:apply-templates select="fd:umelci" mode="detail"/>
-            
+           
             <xsl:apply-templates select="fd:obsah" mode="detail"/>
             <fo:basic-link internal-destination="nadpis" color="red" margin-top="1em" >
                 <fo:inline font="20pt">Zpět na seznam děl</fo:inline>
@@ -195,9 +198,23 @@
         </fo:block>
     </xsl:template>
 
-    <xsl:template match="fd:rok" mode="detail">
+    <xsl:template match="fd:vydavatel" mode="detail">
+        <fo:block font-size="12pt" text-align="left">
+            <fo:inline font-weight="bold">Vydavatel: </fo:inline>
+            <xsl:value-of select="fd:nazev"/>
+        </fo:block>
+    </xsl:template>
+
+    <xsl:template match="fd:vydano" mode="detail">
         <fo:block font-size="12pt" text-align="left">
             <fo:inline font-weight="bold">Rok: </fo:inline>
+            <xsl:value-of select="fd:rok"/>
+        </fo:block>
+    </xsl:template>
+
+    <xsl:template match="fd:vydavatel/fd:zeme" mode="detail">
+        <fo:block font-size="12pt" text-align="left">
+            <fo:inline font-weight="bold">Země: </fo:inline>
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
@@ -208,65 +225,87 @@
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-
+    
+    <xsl:template match="fd:format" mode="detail">
+        <fo:block font-size="12pt" text-align="left">
+            <fo:inline font-weight="bold">Formát: </fo:inline>
+            <xsl:apply-templates/>
+        </fo:block>
+    </xsl:template>
+    
     <xsl:template match="fd:stav" mode="detail">
         <fo:block font-size="12pt" text-align="left">
             <fo:inline font-weight="bold">Stav: </fo:inline>
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-
+    
+    <xsl:template match="fd:cena" mode="detail">
+        <fo:block font-size="12pt" text-align="left">
+            <fo:inline font-weight="bold">Cena: </fo:inline>
+            <xsl:apply-templates/>
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="@mena"/>
+        </fo:block>
+    </xsl:template>
+    
     <xsl:template match="fd:obrazek" mode="detail">
         <xsl:if test="@src">
-            <fo:block text-align="right">
+            <fo:block text-align="left">
                 <fo:external-graphic src="url('images\{@src}')"/>
             </fo:block>
-
-
         </xsl:if>
         <xsl:if test="not(@src)">
             <fo:block margin-bottom="5pt">
                 <fo:inline font-weight="bold">Obal: </fo:inline>
-                
             </fo:block>
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="fd:umelci/*" mode="detail">
-        
-        <fo:table margin-left="0.5em" margin-top="0.25em"
-            margin-bottom="0.25em">
-            <fo:table-body>
-                
-                <fo:table-row>
-                    <fo:table-cell width="5em">
-                        <fo:block margin-right="1.5em">
-                            <xsl:value-of select ="name(.)"/>
-                        </fo:block>
-                    </fo:table-cell>
-                    <fo:table-cell width="5em">
-                        <fo:block margin-right="0.5em">
-                            <xsl:apply-templates/>
-                        </fo:block>
-                    </fo:table-cell>
-                </fo:table-row>
-            </fo:table-body>
-        </fo:table>
-        
+    <xsl:template match="fd:umelci" mode="detail">
+        <fo:block font-size="12pt" text-align="left">
+            <fo:inline font-weight="bold">Umělec: </fo:inline>
+            <xsl:for-each select="fd:umelec">
+                <xsl:if test="position() > 1">, </xsl:if>
+                <xsl:value-of select="."/>
+            </xsl:for-each>
+        </fo:block>
     </xsl:template>
-
-    <!-- ODSTAVEC -->
-    <xsl:attribute-set name="p">
-        <xsl:attribute name="text-indent">1em</xsl:attribute>
-        <xsl:attribute name="space-before">0.6em</xsl:attribute>
-        <xsl:attribute name="space-after">0.6em</xsl:attribute>
-        <xsl:attribute name="text-align">justify</xsl:attribute>
-        <xsl:attribute name="keep-together.within-page">always</xsl:attribute>
-    </xsl:attribute-set>
     
     <xsl:template match="fd:obsah" mode="detail" >
         <fo:inline font-weight="bold">Obsah:</fo:inline>
-        <fo:block xsl:use-attribute-sets="p"><fo:inline><xsl:apply-templates></xsl:apply-templates></fo:inline></fo:block>
-        
+        <fo:table margin-left="0.5em" margin-top="0.25em"
+            margin-bottom="0.25em">
+            <fo:table-column column-width="10%"/>
+            <fo:table-column column-width="70%"/>
+            <fo:table-column column-width="30%"/>
+            <fo:table-body>
+            <xsl:for-each select="fd:vinyl">
+                <xsl:for-each select="fd:strana">
+                    <xsl:for-each select="fd:skladba">
+                        <fo:table-row>
+                            <fo:table-cell>
+                                <fo:block margin-right="0.5em">
+                                <xsl:value-of select="../fd:kod"/>
+                                <xsl:value-of select="fd:cislo"/>
+                                </fo:block>
+                            </fo:table-cell>
+                            <fo:table-cell>
+                                <fo:block margin-right="0.5em">
+                                <xsl:value-of select="fd:nazev"/>
+                                </fo:block>
+                            </fo:table-cell>                       
+                            <fo:table-cell>
+                                <fo:block margin-right="0.5em">
+                                <xsl:value-of select="format-number(floor(fd:delka div 60) mod 60, '0')"/>
+                                <xsl:value-of select="format-number(fd:delka mod 60, ':00')"/>
+                                </fo:block>
+                            </fo:table-cell>   
+                        </fo:table-row>                   
+                    </xsl:for-each>
+                </xsl:for-each>
+            </xsl:for-each>
+            </fo:table-body>
+        </fo:table>>
     </xsl:template>
 </xsl:stylesheet>
