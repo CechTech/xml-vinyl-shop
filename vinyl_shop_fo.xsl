@@ -253,7 +253,7 @@
     <xsl:template match="fd:obrazek" mode="detail">
         <xsl:if test="@src">
             <fo:block text-align="right">
-                <fo:external-graphic src="url('{@src}')"/>
+                <fo:external-graphic src="url({@src})"/>
             </fo:block>
         </xsl:if>
     </xsl:template>
