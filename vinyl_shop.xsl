@@ -16,11 +16,11 @@
                 </fo:simple-page-master>
             </fo:layout-master-set>
 
-            <!-- NADPIS + AUTOR -->
+            <!-- autor -->
             <fo:page-sequence master-reference="vinylshop">
                 <fo:static-content flow-name="xsl-region-before" color="grey" font-size="10pt">
                     <fo:block-container margin-top="-10pt">
-                        <!-- ZAHLAVI-->
+                        <!-- zahlavi-->
                         <fo:block text-align-last="right">
                             <xsl:value-of select="fd:vinyl_shop/fd:autor/fd:jmeno"/>
                             <xsl:text> </xsl:text>
@@ -31,7 +31,7 @@
                 </fo:static-content>
 
                 <fo:static-content flow-name="xsl-region-after" color="black" font-size="10pt">
-                    <!-- ZAPATI -->
+                    <!-- zapati -->
                     <fo:block text-align="center">
                         <fo:page-number/>
                         <xsl:text> / </xsl:text>
@@ -41,12 +41,12 @@
 
                 <fo:flow flow-name="xsl-region-body">
                     <fo:block font-size="32pt" font-weight="bold" text-align="center"
-                        space-before="50pt" space-before.conditionality="retain" space-after="20px">
+                        space-before="50pt" space-before.conditionality="retain" space-after="20px" id="seznam">
                         <xsl:text>Vinyl Shop</xsl:text>
                     </fo:block>
 
                     <fo:block text-align="center" space-before="35pt" space-after="35pt">
-                        <fo:leader leader-length="5in" leader-pattern="rule"
+                        <fo:leader leader-length="0.8in" leader-pattern="rule"
                             alignment-baseline="middle" rule-thickness="0.8pt" color="black"/>
                     </fo:block>
 
@@ -65,7 +65,7 @@
                     <!-- tabulka desek -->
                     <fo:block font-size="10pt" margin-top="30pt">
                         <fo:table width="155mm" border="1pt" border-style="solid"
-                            background-color="#F5E6F6" display-align="center">
+                            background-color="#FFFFFF" display-align="center">
                             <fo:table-column column-width="40%"/>
                             <fo:table-column column-width="25%"/>
                             <fo:table-column column-width="25%"/>
@@ -73,7 +73,7 @@
                             <fo:table-header>
                                 <fo:table-row border-style="solid" border-width="2pt"
                                     border-color="black" font-weight="bold" font-size="12pt"
-                                    background-color="#000000" color="white" text-align="center">
+                                    background-color="#930B0A" color="white" text-align="center">
                                     <fo:table-cell padding="2pt" border-style="solid"
                                         border-color="black">
                                         <fo:block>Název</fo:block>
@@ -100,7 +100,7 @@
                         </fo:table>
                     </fo:block>
 
-                    <!-- DETAIL FILMU -->
+                    <!-- detail dila -->
                     <fo:block>
                         <xsl:apply-templates select="fd:vinyl_shop/fd:hudebni_dila"
                             mode="detail"/>
@@ -111,7 +111,7 @@
         </fo:root>
     </xsl:template>
 
-    <!-- TABULKA FILMU - TEMPLATE -->
+    <!-- tabulka del -->
     <xsl:template name="dila">
         <fo:table-row>
             <fo:table-cell padding="4pt" font-weight="bold" border-style="solid">
@@ -162,7 +162,7 @@
         </xsl:apply-templates>
     </xsl:template>
     <xsl:template match="fd:dilo" mode="detail">
-        <fo:block keep-together="always" id="{generate-id(.)}" font-size="12pt">
+        <fo:block page-break-before="always" keep-together="always" id="{generate-id(.)}" font-size="12pt">
              <fo:table>
                 <fo:table-body>
                     <fo:table-row>
@@ -186,14 +186,14 @@
             </fo:table>
            
             <xsl:apply-templates select="fd:obsah" mode="detail"/>
-            <fo:basic-link internal-destination="nadpis" color="red" margin-top="1em" >
+            <fo:basic-link internal-destination="seznam" color="red" margin-top="1em" >
                 <fo:inline font="20pt">Zpět na seznam děl</fo:inline>
             </fo:basic-link>
         </fo:block>
     </xsl:template>
 
     <xsl:template match="fd:nazev" mode="detail">
-        <fo:block font-size="32pt" text-align="center" margin-bottom="30px">
+        <fo:block font-size="26pt" text-align="left" margin-bottom="30px">
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
@@ -251,13 +251,8 @@
     
     <xsl:template match="fd:obrazek" mode="detail">
         <xsl:if test="@src">
-            <fo:block text-align="left">
+            <fo:block text-align="right">
                 <fo:external-graphic src="url('images\{@src}')"/>
-            </fo:block>
-        </xsl:if>
-        <xsl:if test="not(@src)">
-            <fo:block margin-bottom="5pt">
-                <fo:inline font-weight="bold">Obal: </fo:inline>
             </fo:block>
         </xsl:if>
     </xsl:template>
@@ -273,7 +268,7 @@
     </xsl:template>
     
     <xsl:template match="fd:obsah" mode="detail" >
-        <fo:inline font-weight="bold">Obsah:</fo:inline>
+        <fo:inline font-weight="bold">Skladby:</fo:inline>
         <fo:table margin-left="0.5em" margin-top="0.25em"
             margin-bottom="0.25em">
             <fo:table-column column-width="10%"/>
@@ -306,6 +301,6 @@
                 </xsl:for-each>
             </xsl:for-each>
             </fo:table-body>
-        </fo:table>>
+        </fo:table>
     </xsl:template>
 </xsl:stylesheet>
