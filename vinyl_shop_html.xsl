@@ -118,6 +118,7 @@
                 <head>
                     <title>
                         <xsl:text>Vinyl Shop</xsl:text>
+                        <xsl:text> </xsl:text>
                         <xsl:apply-templates select="fd:nazev"/>
                     </title>
                     <link rel="stylesheet" type="text/css" href="styles.css"/>

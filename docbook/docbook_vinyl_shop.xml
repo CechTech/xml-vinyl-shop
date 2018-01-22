@@ -123,7 +123,13 @@
        
         <para>Element <emphasis>hudebni_dila</emphasis> obsahuje elementy <emphasis>dilo</emphasis>, předpokládá 
             alespoň 1 výskyt a maximální počet výskytů je neomezen pomocí hodnoty <emphasis>"unbounded"</emphasis>.
-        </para>    
+        </para>
+        
+        <sect2>
+            <title>Schematron</title>
+            <para>V souboru <filename>vinyl_shop.sch</filename> je schematron, pomocí kterého validujeme
+            XML dokumenty. Schematron kontroluje existenci povinných tagů a atributů.</para>
+        </sect2>
     </sect1>
     
     <sect1>

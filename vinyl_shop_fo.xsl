@@ -63,7 +63,6 @@
                         <xsl:apply-templates select="//fd:email"/>
                     </fo:block>
 
-
                     <!-- tabulka desek -->
                     <fo:block font-size="10pt" margin-top="35pt">
                         <fo:table width="155mm" border="1pt" border-style="solid"
@@ -157,7 +156,7 @@
         </fo:block>
     </xsl:template>
 
-    <!-- DETAIL FILMU -->
+    <!-- detail dila -->
     <xsl:template match="fd:hudebni_dila">
         <xsl:apply-templates select="fd:dilo" mode="detail">
             <xsl:sort select="fd:nazev" data-type="text" lang="cs"/>
